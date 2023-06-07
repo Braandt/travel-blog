@@ -1,14 +1,10 @@
 import { useState } from "react";
 
-export default function ReadPostButton({ link }) {
-
-    const [hover, setHover] = useState(false)
+export default function ReadPostButton() {
 
     return (
         <div
             className="shadow-lg"
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
         >
 
             <button

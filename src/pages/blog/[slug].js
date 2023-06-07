@@ -3,9 +3,8 @@ import path from 'path'
 import matter from 'gray-matter'
 import { serialize } from 'next-mdx-remote/serialize'
 import { MDXRemote } from 'next-mdx-remote'
-import Button from '@/components/Button'
 
-const components = { Button }
+const components = {}
 
 const PostPage = ({ frontMatter, mdxSource }) => {
     return (

@@ -4,6 +4,7 @@ import matter from 'gray-matter'
 import Link from 'next/link'
 import Image from 'next/image'
 import Hero from '@/components/Hero'
+import PhotoCarousel from '@/components/PhotoCarousel'
 
 export default function Home({ posts, frontMatter }) {
 
@@ -12,8 +13,13 @@ export default function Home({ posts, frontMatter }) {
 
 			<Hero posts={posts} />
 
-			{posts.map(post => (
-				<Link href={'/blog/' + post.slug} passHref key={post.slug}>
+			<PhotoCarousel />
+
+			{posts.map((post, index) => (
+				<Link
+					href={'/blog/' + post.slug}
+					passHref
+					key={index}>
 					<h5 className=''>{post.frontMatter.title}</h5>
 					<p className=''>{post.frontMatter.description}</p>
 					<small className=''>{post.frontMatter.date}</small>

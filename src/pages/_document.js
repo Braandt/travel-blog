@@ -3,7 +3,9 @@ import { Html, Head, Main, NextScript } from 'next/document'
 export default function Document() {
 	return (
 		<Html lang="en">
-			<Head />
+			<Head>
+				<link href="https://api.fontshare.com/v2/css?f[]=erode@400&f[]=tanker@400&display=swap" rel="stylesheet" />
+			</Head>
 			<body>
 				<Main />
 				<NextScript />
