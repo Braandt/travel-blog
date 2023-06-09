@@ -6,12 +6,12 @@ import Head from 'next/head'
 
 export default function App({ Component, pageProps }) {
 	return (
-		<div className='text-black bg-black'>
+		<div className='text-pallete-2'>
 			<Head>
 				<title>Next and MDX Blog</title>
 			</Head>
 
-			<div className='text-vesuvius-950 bg-white'>
+			<div>
 				<Nav />
 				<main>
 					<Component {...pageProps} />

@@ -3,7 +3,7 @@ import { useTransition, animated } from '@react-spring/web'
 import Link from 'next/link'
 import { MdLocationOn } from 'react-icons/md'
 import ReadPostButton from './ReadPostButton'
-import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs'
+import { BsChevronCompactLeft, BsChevronCompactRight, BsPause, BsPlay } from 'react-icons/bs'
 
 export default function Hero({ posts }) {
 
@@ -61,7 +61,7 @@ export default function Hero({ posts }) {
         return () => {
             resetTimeout()
         };
-    }, [post])
+    }, [post, playCorousel])
 
     return (
         <div
@@ -82,6 +82,8 @@ export default function Hero({ posts }) {
                         <Link
                             href={`/blog/${post.slug}`}
                             className="absolute flex flex-col items-center group p-24 max-w-screen-lg"
+                            onMouseEnter={() => setPlayCorousel(false)}
+                            onMouseLeave={() => setPlayCorousel(true)}
                         >
 
                             <div className="flex text-xl tracking-wider gap-6 drop-shadow-lg">
@@ -129,6 +131,9 @@ export default function Hero({ posts }) {
             </button>
 
             <div className='absolute bottom-0 flex items-center justify-center gap-4 w-full h-12 mb-12'>
+                {playCorousel ?
+                    <BsPause onClick={() => setPlayCorousel(false)} /> :
+                    <BsPlay onClick={() => setPlayCorousel(true)} />}
                 {posts.map((p, i) => (
                     <div
                         key={i}

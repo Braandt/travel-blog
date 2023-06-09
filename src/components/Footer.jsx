@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { FaFacebook, FaInstagram, FaPatreon, FaTwitter, FaYoutube } from 'react-icons/fa'
+import { FaEnvelope, FaInstagram, FaPatreon, FaTwitter, FaYoutube } from 'react-icons/fa'
 
 export default function Footer() {
 
@@ -10,8 +10,8 @@ export default function Footer() {
         { name: 'youtube', url: 'https://www.youtube.com', icon: <FaYoutube className={iconStyle} /> },
         { name: 'instagram', url: 'https://www.instagram.com', icon: <FaInstagram className={iconStyle} /> },
         { name: 'patreon', url: 'https://www.patreon.com', icon: <FaPatreon className={iconStyle} /> },
-        { name: 'facebook', url: 'https://www.facebook.com', icon: <FaFacebook className={iconStyle} /> },
         { name: 'twitter', url: 'https://www.twitter.com', icon: <FaTwitter className={iconStyle} /> },
+        { name: 'email', url: 'mailto: leoobrandt@hotmail.com', icon: <FaEnvelope className={iconStyle} /> },
     ]
 
     const links = [
@@ -59,7 +59,7 @@ export default function Footer() {
                 ))}
             </div>
 
-            <p className='text-white/40 tracking-widest'>Copyright &copy; {year} - Desenvolvido pro Leonardo Brandt</p>
+            <small className='text-white/40 tracking-widest'>Copyright &copy; {year} - Desenvolvido pro Leonardo Brandt</small>
 
         </div>
     )

@@ -9,7 +9,8 @@ module.exports = {
     fontFamily: {
       'sans': 'Tanker',
       'sans2': 'montserrat',
-      'serif': 'erode'
+      'serif': 'Erode',
+      'serif2': 'Bespoke Serif'
     },
     extend: {
       colors: {

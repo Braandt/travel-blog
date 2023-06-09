@@ -1,12 +1,24 @@
 import fs from 'fs'
 import * as path from 'path'
 import matter from 'gray-matter'
-import Link from 'next/link'
-import Image from 'next/image'
 import Hero from '@/components/Hero'
 import PhotoCarousel from '@/components/PhotoCarousel'
+import LastPosts from '@/components/LastPosts'
+import { sortByDate } from '../../utils'
 
 export default function Home({ posts, frontMatter }) {
+
+	posts = posts.map(post => (
+		{
+			...post,
+			frontMatter: {
+				...post.frontMatter,
+				date: new Date(post.frontMatter.date).toLocaleDateString('pt-BR', {
+					dateStyle: 'long'
+				})
+			}
+		}
+	))
 
 	return (
 		<div>
@@ -15,24 +27,7 @@ export default function Home({ posts, frontMatter }) {
 
 			<PhotoCarousel />
 
-			{posts.map((post, index) => (
-				<Link
-					href={'/blog/' + post.slug}
-					passHref
-					key={index}>
-					<h5 className=''>{post.frontMatter.title}</h5>
-					<p className=''>{post.frontMatter.description}</p>
-					<small className=''>{post.frontMatter.date}</small>
-					<Image
-						src={post.frontMatter.thumbnailUrl}
-						className=''
-						alt=''
-						width={500}
-						height={500}
-						style={{ objectFit: 'cover' }}
-					/>
-				</Link>
-			))}
+			<LastPosts posts={posts} />
 		</div>
 	)
 }
@@ -51,6 +46,8 @@ export const getStaticProps = async () => {
 	})
 
 	return {
-		props: { posts }
+		props: {
+			posts: posts.sort(sortByDate)
+		}
 	}
 }
