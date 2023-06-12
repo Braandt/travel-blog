@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { FaEnvelope, FaInstagram, FaPatreon, FaTwitter, FaYoutube } from 'react-icons/fa'
-import AnimatedLogo from './AnimatedLogo'
+import AnimatedLogo from '../logo/AnimatedLogo'
 
 export default function Footer() {
 

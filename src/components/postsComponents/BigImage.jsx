@@ -17,7 +17,7 @@ export default function BigImage({ setImgPresentation, selectedImage, images, se
                 alt={caption}
                 onClick={() => {
                     setImgPresentation(true)
-                    setSelectedImg(images.indexOf(selectedImage))
+                    setSelectedImg(selectedImage)
                 }}
             />
             {!captionDisabled &&

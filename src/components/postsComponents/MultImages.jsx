@@ -1,23 +1,26 @@
 import Image from "next/image";
 
-export default function MultImages({ setImgPresentation, images, selectedImages, setSelectedImg, captionDisabled }) {
+export default function MultImages({ setImgPresentation, images, selectedImages, setSelectedImg, captionDisabled, setScrollPosition }) {
 
     const Img = ({ selectedImage }) => {
 
-        const { url, caption } = selectedImage
+        const { url, caption } = images[selectedImage]
+
+        const handleClick = () => {
+            setScrollPosition(document.documentElement.scrollTop / document.documentElement.offsetHeight)
+            setImgPresentation(true)
+            setSelectedImg(selectedImage)
+        }
 
         return (
-            <div className="relative w-full">
+            <div className="w-full">
                 <Image
                     src={url}
                     width={1000}
                     height={1000}
                     className="object-cover h-full object-center cursor-zoom-in"
                     alt={caption}
-                    onClick={() => {
-                        setImgPresentation(true)
-                        setSelectedImg(images.indexOf(selectedImage))
-                    }}
+                    onClick={handleClick}
                 />
                 {!captionDisabled &&
                     <div>
@@ -33,7 +36,7 @@ export default function MultImages({ setImgPresentation, images, selectedImages,
             ${captionDisabled ? 'mb-12 mt-2' : 'my-12'}`}
         >
             {selectedImages.map(img => (
-                <Img key={images[img].url} selectedImage={images[img]} />
+                <Img key={images[img].url} selectedImage={img} />
             ))}
 
         </div>

@@ -3,15 +3,14 @@ import { useTransition, animated } from '@react-spring/web'
 import Link from 'next/link'
 import { MdLocationOn } from 'react-icons/md'
 import { BsChevronCompactLeft, BsChevronCompactRight, BsPause, BsPlay } from 'react-icons/bs'
-import ReadPostButton from './ReadPostButton'
-import { nextImage, prevImage } from '../../utils'
+import { nextImage, prevImage } from '../../../utils'
+import TitleFlag from '@/components/TitleFlag'
 
 export default function Hero({ posts }) {
 
     const [post, setPost] = useState(0)
     const [reverse, setReverse] = useState(false)
     const [playCorousel, setPlayCorousel] = useState(true)
-    const [images, setImages] = useState([])
 
     const fetchImages = () => {
         posts.map(post => {
@@ -61,7 +60,7 @@ export default function Hero({ posts }) {
 
         return () => {
             resetTimeout()
-        };
+        }
     }, [post, playCorousel])
 
     return (
@@ -103,7 +102,11 @@ export default function Hero({ posts }) {
                                 {description}
                             </div>
 
-                            <ReadPostButton />
+                            <TitleFlag
+                                text='Ler Artigo'
+                                className='!px-12 text-xl !text-black bg-white mix-blend-screen transition-all
+                                group-hover:bg-orange-400 group-hover:mix-blend-normal group-hover:text-black'
+                            />
 
                         </Link>
                     </animated.div>

@@ -9,17 +9,22 @@ export default function posts({ posts }) {
     return (
         <>
             <div className='text-center my-24'>
+
                 <div className='text-6xl mb-6'>Todas as histórias até agora</div>
                 <div className='font-sans2 mx-auto max-w-4xl'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet voluptatum pariatur assumenda quis dicta sapiente iure doloremque molestias fugiat ex!</div>
 
             </div>
 
             <div className='grid grid-cols-3 mx-4 border-r-[1px] border-pallete-2/50'>
+
                 {posts.map(post => (
                     <div className='relative border-l-[1px] border-pallete-2/50'>
+
                         <PostThumbnail key={post.frontMatter.id} post={post} />
+
                     </div>
                 ))}
+
             </div>
         </>
     )

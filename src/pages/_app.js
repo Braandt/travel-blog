@@ -1,6 +1,6 @@
-import CTA from '@/components/CTA'
-import Footer from '@/components/Footer'
-import Nav from '@/components/Nav'
+import CTA from '@/components/sections/CTA'
+import Footer from '@/components/sections/Footer'
+import Nav from '@/components/sections/Nav'
 import '@/styles/globals.css'
 import Head from 'next/head'
 

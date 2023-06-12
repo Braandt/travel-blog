@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { MdLocationOn } from "react-icons/md";
-import TitleFlag from "./TitleFlag";
+import TitleFlag from "../TitleFlag";
 
 export default function LastPosts({ posts }) {
 

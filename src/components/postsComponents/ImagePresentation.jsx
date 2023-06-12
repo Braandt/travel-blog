@@ -1,11 +1,11 @@
 import { animated, useTransition } from "@react-spring/web"
 import Image from "next/image"
 import { useState } from "react"
-import PassButton from "./PassButton"
-import ExitButton from "./ExitButton"
-import { nextImage, prevImage } from "../../utils"
+import PassButton from "../UI/PassButton"
+import ExitButton from "../UI/ExitButton"
+import { nextImage, prevImage } from "../../../utils"
 
-export default function ImagePresentation({ title, images, setImgPresentation, selectedImg }) {
+export default function ImagePresentation({ title, images, setImgPresentation, selectedImg, scrollPosition }) {
 
     const [image, setImage] = useState(selectedImg)
     const [reverse, setReverse] = useState(false)
@@ -23,7 +23,7 @@ export default function ImagePresentation({ title, images, setImgPresentation, s
 
                 {transitions((style, item) => {
 
-                    const { src, caption } = images[item]
+                    const { url, caption } = images[item]
 
                     return (
                         <animated.div
@@ -31,7 +31,7 @@ export default function ImagePresentation({ title, images, setImgPresentation, s
                             style={style}
                         >
                             <Image
-                                src={src}
+                                src={url}
                                 fill
                                 alt={caption}
                                 className='h-full w-fit max-w-full mx-auto object-contain'
@@ -49,7 +49,7 @@ export default function ImagePresentation({ title, images, setImgPresentation, s
                 <PassButton onClick={() => nextImage(setImage, images, setReverse)} />
                 <PassButton back onClick={() => prevImage(setImage, images, setReverse)} />
 
-                <ExitButton setImgPresentation={setImgPresentation} />
+                <ExitButton setImgPresentation={setImgPresentation} scrollPosition={scrollPosition} />
 
             </div>
         </div >

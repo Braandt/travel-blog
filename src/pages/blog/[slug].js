@@ -3,14 +3,14 @@ import path from 'path'
 import matter from 'gray-matter'
 import { serialize } from 'next-mdx-remote/serialize'
 import { MDXRemote } from 'next-mdx-remote'
-import PostHero from '@/components/PostHero'
+import PostHero from '@/components/sections/PostHero'
 import TitleFlag from '@/components/TitleFlag'
-import BigImage from '@/components/BigImage'
-import MultImages from '@/components/MultImages'
+import BigImage from '@/components/postsComponents/BigImage'
+import MultImages from '@/components/postsComponents/MultImages'
 import { useEffect, useState } from 'react'
-import ImagePresentation from '@/components/ImagePresentation'
-import RelatedPost from '@/components/RelatedPost'
-import PostPhotoCarousel from '@/components/PostPhotoCarousel'
+import ImagePresentation from '@/components/postsComponents/ImagePresentation'
+import RelatedPost from '@/components/sections/RelatedPost'
+import PostPhotoCarousel from '@/components/postsComponents/PostPhotoCarousel'
 
 const components = {
     h1: (props) => <p className='font-sans tracking-wide text-3xl' {...props}></p>,
@@ -32,6 +32,7 @@ const PostPage = ({ frontMatter, slug, mdxSource, posts }) => {
     const [imgPresentation, setImgPresentation] = useState(false)
     const [selectedImg, setSelectedImg] = useState(0)
     const [images, setImages] = useState([])
+    const [scrollPosition, setScrollPosition] = useState(0)
 
     let relatedPosts = []
 
@@ -44,13 +45,14 @@ const PostPage = ({ frontMatter, slug, mdxSource, posts }) => {
         fetch(`/images/posts/${slug}/images.json`)
             .then(res => res.json())
             .then(data => setImages(data))
+            .catch(setImages([null]))
     }
 
     useEffect(() => {
         fetchImagesData()
-    }, [slug])
+    }, [])
 
-    const scope = { images, imgPresentation, setImgPresentation, setSelectedImg }
+    const scope = { images, setImgPresentation, setSelectedImg, setScrollPosition }
 
     return (
         <>
@@ -95,8 +97,8 @@ const PostPage = ({ frontMatter, slug, mdxSource, posts }) => {
 
             </div>
 
-            {imgPresentation &&
-                <ImagePresentation title={title} setImgPresentation={setImgPresentation} images={images} selectedImg={selectedImg} />
+            {imgPresentation && images.length > 0 &&
+                <ImagePresentation title={title} setImgPresentation={setImgPresentation} images={images} selectedImg={selectedImg} scrollPosition={scrollPosition} />
             }
         </>
     )

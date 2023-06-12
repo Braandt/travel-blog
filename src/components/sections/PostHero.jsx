@@ -3,7 +3,7 @@ import { MdLocationOn } from "react-icons/md"
 export default function PostHero({ date, location, title, thumbnailUrl }) {
 
     return (
-        <div className="h-[calc(100vh_-_3rem)] p-12 pb-8">
+        <div className="h-[calc(100vh_-_3rem)] p-8 pb-4">
             <div className="h-full flex flex-col">
                 <div
                     className="flex-1 bg-full bg-center glow-image"

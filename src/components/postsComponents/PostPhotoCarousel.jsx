@@ -1,9 +1,9 @@
 import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
-import PassButton from "./PassButton"
+import PassButton from "../UI/PassButton"
 
-export default function PostPhotoCarousel({ images }) {
+export default function PostPhotoCarousel({ images, setImgPresentation, setSelectedImg, setScrollPosition }) {
 
     const GAP = 16
 
@@ -35,6 +35,12 @@ export default function PostPhotoCarousel({ images }) {
         }
     }
 
+    const handleClick = (index) => {
+        setScrollPosition(document.documentElement.scrollTop)
+        setImgPresentation(true)
+        setSelectedImg(index)
+    }
+
     return (
         <div className="relative self-center flex justify-end h-[80vh] w-screen py-12">
 
@@ -43,20 +49,20 @@ export default function PostPhotoCarousel({ images }) {
                 className='flex h-full max-w-7xl gap-4 transition-all'
             >
                 {images.map((img, index) => (
-                    <Link
+                    <div
                         ref={index == current ? ref : null}
-                        href='/'
-                        key={index}
-                        className={`shrink-0`}
+                        key={img.id}
+                        className='shrink-0'
+                        onClick={() => handleClick(index)}
                     >
                         <Image
                             src={img.url}
                             width={1200}
                             height={1200}
                             alt={img.caption}
-                            className="h-full w-fit object-contain"
+                            className="h-full w-fit object-contain cursor-zoom-in"
                         />
-                    </Link>
+                    </div>
                 ))}
             </div>
 

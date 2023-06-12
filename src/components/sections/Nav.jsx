@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import Logo from "./Logo";
+import Logo from "../logo/Logo";
 
 export default function Nav() {
 

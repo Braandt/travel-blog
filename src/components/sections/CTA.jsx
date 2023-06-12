@@ -1,6 +1,4 @@
-import { BsBicycle } from 'react-icons/bs'
-import TitleFlag from './TitleFlag'
-import SubStackForms from './SubStackForms'
+import TitleFlag from '../TitleFlag'
 
 export default function CTA() {
     return (
@@ -20,7 +18,7 @@ export default function CTA() {
                 <div className="w-1/2">
                     <div className='relative'>
 
-                        <SubStackForms />
+                        <iframe src="https://leoobrandt.substack.com/embed" width="480" height="320"></iframe>
 
                         {/* <form>
                             <label htmlFor="email">

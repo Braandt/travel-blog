@@ -1,9 +1,9 @@
 import fs from 'fs'
 import * as path from 'path'
 import matter from 'gray-matter'
-import Hero from '@/components/Hero'
+import Hero from '@/components/sections/Hero'
 import PhotoCarousel from '@/components/PhotoCarousel'
-import LastPosts from '@/components/LastPosts'
+import LastPosts from '@/components/sections/LastPosts'
 import { sortByDate, brasilDataFormat } from '../../utils'
 
 export default function Home({ posts }) {
