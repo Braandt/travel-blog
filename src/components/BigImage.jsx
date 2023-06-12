@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function BigImage({ setImgPresentation, selectedImage, images, setSelectedImg, captionDisabled }) {
 
-    const { src, caption } = selectedImage
+    const { url, caption } = images[selectedImage]
 
     return (
         <div

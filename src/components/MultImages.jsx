@@ -4,7 +4,7 @@ export default function MultImages({ setImgPresentation, images, selectedImages,
 
     const Img = ({ selectedImage }) => {
 
-        const { src, caption } = selectedImage
+        const { url, caption } = selectedImage
 
         return (
             <div className="relative w-full">
@@ -33,7 +33,7 @@ export default function MultImages({ setImgPresentation, images, selectedImages,
             ${captionDisabled ? 'mb-12 mt-2' : 'my-12'}`}
         >
             {selectedImages.map(img => (
-                <Img key={img.src} selectedImage={img} />
+                <Img key={images[img].src} selectedImage={images[img]} />
             ))}
 
         </div>
