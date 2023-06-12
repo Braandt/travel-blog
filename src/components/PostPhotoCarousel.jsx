@@ -3,7 +3,7 @@ import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 import PassButton from "./PassButton"
 
-export default function PostPhotoCarousel() {
+export default function PostPhotoCarousel({ images }) {
 
     const GAP = 16
 
@@ -11,18 +11,6 @@ export default function PostPhotoCarousel() {
     const [current, setCurrent] = useState(0)
     const [offset, setOffset] = useState(0)
     const [widthArr, setWidthArr] = useState([])
-
-    const images = [
-        '/images/posts/a-neuquen/10.jpg',
-        '/images/posts/a-neuquen/11.jpg',
-        '/images/posts/a-neuquen/22.jpg',
-        '/images/posts/a-neuquen/19.jpg',
-        '/images/posts/a-neuquen/20.jpg'
-    ]
-
-    useEffect(() => {
-        console.log(current, widthArr, offset, ref.current.clientWidth)
-    }, [current])
 
     const nextImage = () => {
         if (current != images.length - 1) {
@@ -62,10 +50,10 @@ export default function PostPhotoCarousel() {
                         className={`shrink-0`}
                     >
                         <Image
-                            src={img}
+                            src={img.url}
                             width={1200}
                             height={1200}
-                            alt=''
+                            alt={img.caption}
                             className="h-full w-fit object-contain"
                         />
                     </Link>

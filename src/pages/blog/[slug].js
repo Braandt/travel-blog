@@ -50,7 +50,7 @@ const PostPage = ({ frontMatter, slug, mdxSource, posts }) => {
         fetchImagesData()
     }, [slug])
 
-    const imagesScope = { images, imgPresentation, setImgPresentation, setSelectedImg }
+    const scope = { images, imgPresentation, setImgPresentation, setSelectedImg }
 
     return (
         <>
@@ -72,7 +72,7 @@ const PostPage = ({ frontMatter, slug, mdxSource, posts }) => {
 
                     <div className='max-w-4xl mx-auto font-serif2 tracking-wide leading-relaxed flex flex-col'>
                         {images.length > 0 &&
-                            <MDXRemote {...mdxSource} components={components} scope={imagesScope} ></MDXRemote>
+                            <MDXRemote {...mdxSource} components={components} scope={scope} ></MDXRemote>
                         }
                     </div>
 

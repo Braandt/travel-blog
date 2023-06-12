@@ -1,17 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function PhotoCarousel() {
 
     const gap = 12
 
-    const images = [
-        '/images/posts/a-neuquen/10.jpg',
-        '/images/posts/a-neuquen/11.jpg',
-        '/images/posts/a-neuquen/22.jpg',
-        '/images/posts/a-neuquen/19.jpg',
-        '/images/posts/a-neuquen/20.jpg'
-    ]
+    const [images, setImages] = useState([])
+
+    const fetchImages = () => {
+        fetch('/images/carouselPhotos.json')
+            .then(res => res.json())
+            .then(data => setImages(data))
+    }
+
+    useEffect(() => fetchImages(), [])
 
     return (
         <div className="flex h-[70vh] gap-8 overflow-hidden py-24">
@@ -30,17 +33,17 @@ export function ImagePortion({ images }) {
             style={{ animation: 'scroll-x 60s linear infinite' }}
             className='flex shrink-0 h-full gap-12'
         >
-            {images.map((img, index) => (
+            {images.length > 0 && images.map((img, index) => (
                 <Link
                     href='/'
-                    key={index}
+                    key={img.id}
                 >
                     <Image
-                        src={img}
+                        src={img.url}
                         width={1200}
                         height={1200}
                         className="h-full object-contain w-fit shadow-lg"
-                        alt=''
+                        alt={img.alt}
                     />
                 </Link>
             ))}

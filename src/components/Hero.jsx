@@ -4,30 +4,31 @@ import Link from 'next/link'
 import { MdLocationOn } from 'react-icons/md'
 import { BsChevronCompactLeft, BsChevronCompactRight, BsPause, BsPlay } from 'react-icons/bs'
 import ReadPostButton from './ReadPostButton'
+import { nextImage, prevImage } from '../../utils'
 
 export default function Hero({ posts }) {
 
     const [post, setPost] = useState(0)
     const [reverse, setReverse] = useState(false)
     const [playCorousel, setPlayCorousel] = useState(true)
+    const [images, setImages] = useState([])
 
-    const nextPost = () => {
-        setReverse(false)
-        setPost(prevState => (prevState + 1) % posts.length)
+    const fetchImages = () => {
+        posts.map(post => {
+            fetch(post.frontMatter.thumbnailUrl)
+                .then(res => console.log(res))
+        })
     }
 
-    const prevPost = () => {
-        setReverse(true)
-        setPost(prevState => (prevState - 1 + posts.length) % posts.length)
-    }
+    useEffect(() => fetchImages(), [])
 
     const handleNext = () => {
-        nextPost()
+        nextImage(setPost, posts, setReverse)
         setPlayCorousel(false)
     }
 
     const handlePrev = () => {
-        prevPost()
+        prevImage(setPost, posts, setReverse)
         setPlayCorousel(false)
     }
 
@@ -53,7 +54,7 @@ export default function Hero({ posts }) {
             resetTimeout()
             timeoutRef.current = setTimeout(
                 () =>
-                    nextPost(),
+                    nextImage(setPost, posts, setReverse),
                 5000
             )
         }
