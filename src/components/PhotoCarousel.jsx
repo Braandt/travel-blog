@@ -6,10 +6,11 @@ export default function PhotoCarousel() {
     const gap = 12
 
     const images = [
-        '/images/a-neuquen/hero.jpg',
-        '/images/javascript-functions-thumbnail.jpeg',
-        '/images/python-variables-thumbnail.jpeg',
-        '/images/solidjs-thumbnail.jpeg'
+        '/images/posts/a-neuquen/10.jpg',
+        '/images/posts/a-neuquen/11.jpg',
+        '/images/posts/a-neuquen/22.jpg',
+        '/images/posts/a-neuquen/19.jpg',
+        '/images/posts/a-neuquen/20.jpg'
     ]
 
     return (
@@ -36,10 +37,10 @@ export function ImagePortion({ images }) {
                 >
                     <Image
                         src={img}
-                        className="h-full object-contain w-fit shadow-lg"
-                        alt=''
                         width={1200}
                         height={1200}
+                        className="h-full object-contain w-fit shadow-lg"
+                        alt=''
                     />
                 </Link>
             ))}

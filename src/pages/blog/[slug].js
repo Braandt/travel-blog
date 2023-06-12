@@ -6,70 +6,97 @@ import { MDXRemote } from 'next-mdx-remote'
 import PostHero from '@/components/PostHero'
 import TitleFlag from '@/components/TitleFlag'
 import BigImage from '@/components/BigImage'
-import TwoImages from '@/components/TwoImages'
-import { useState } from 'react'
+import MultImages from '@/components/MultImages'
+import { useEffect, useState } from 'react'
 import ImagePresentation from '@/components/ImagePresentation'
+import RelatedPost from '@/components/RelatedPost'
+import PostPhotoCarousel from '@/components/PostPhotoCarousel'
 
 const components = {
     h1: (props) => <p className='font-sans tracking-wide text-3xl' {...props}></p>,
     p: (props) => <p className='text-justify' {...props}></p>,
     TitleFlag,
     BigImage,
-    TwoImages
+    MultImages,
+    PostPhotoCarousel
 }
 
-const PostPage = ({ frontMatter, mdxSource, posts }) => {
+const PostPage = ({ frontMatter, slug, mdxSource, posts }) => {
 
-    const { title, description, date, location, intro, tags, thumbnailUrl } = frontMatter
+    const { id, title, description, date, location, intro, tags, thumbnailUrl } = frontMatter
+
+    const fomatedDate = new Date(date).toLocaleDateString('pt-br', { dateStyle: 'long' })
 
     const tagsText = tags.map((t, i) => i != tags.length - 1 ? t + ' / ' : t)
 
     const [imgPresentation, setImgPresentation] = useState(false)
     const [selectedImg, setSelectedImg] = useState(0)
+    const [images, setImages] = useState([])
 
-    const images = [
-        { src: '/images/a-neuquen/1.jpg', caption: 'Ponte Anita Garibaldi' },
-        { src: '/images/a-neuquen/2.jpg', caption: 'Melhor por do sol uruguaio' },
-        { src: '/images/a-neuquen/3.jpg', caption: 'Hora de dar tchau e partir' },
-        { src: '/images/a-neuquen/4.jpg', caption: 'Hora de dar tchau e partir' },
-    ]
+    let relatedPosts = []
+
+    posts.filter(item => item.frontMatter.id != id).forEach(post => {
+        post.frontMatter.tags.some(tag => tags.includes(tag)) && relatedPosts.push(post)
+    })
+
+    const fetchImagesData = () => {
+
+        fetch(`/images/posts/${slug}/images.json`)
+            .then(res => res.json())
+            .then(data => setImages(data))
+    }
+
+    useEffect(() => {
+        fetchImagesData()
+    }, [slug])
+
+    const imagesScope = { images, imgPresentation, setImgPresentation, setSelectedImg }
 
     return (
         <>
-            <PostHero frontMatter={frontMatter} />
+            <PostHero date={fomatedDate} title={title} location={location} thumbnailUrl={thumbnailUrl} />
 
-            <div className='mx-12 mb-24'>
-
-                <h1 className='my-2 text-5xl'>{title}</h1>
+            <div className='px-12 mb-24 overflow-hidden'>
 
                 <div className='mt-4 max-w-5xl mx-auto'>
-
-                    <div className='flex mb-8 gap-4'>
-                        <div className='w-2 bg-pallete-2'></div>
-                        <p className='font-serif2 text-xl font-semibold'>{intro}</p>
-                    </div>
 
                     <TitleFlag
                         text={tagsText}
                         className='my-4'
                     />
 
-                    <div className='max-w-4xl mx-auto font-serif2 tracking-wide flex flex-col'>
-                        <MDXRemote {...mdxSource} components={components} scope={{ images, imgPresentation, setImgPresentation, setSelectedImg }} ></MDXRemote>
+                    <div className='flex mb-8 gap-4'>
+                        <div className='w-2 bg-pallete-2'></div>
+                        <p className='font-serif2 text-xl font-semibold'>{intro}</p>
+                    </div>
+
+                    <div className='max-w-4xl mx-auto font-serif2 tracking-wide leading-relaxed flex flex-col'>
+                        {images.length > 0 &&
+                            <MDXRemote {...mdxSource} components={components} scope={imagesScope} ></MDXRemote>
+                        }
                     </div>
 
                     <div className='mt-12'>
-                        <p>Conteúdo relacionado</p>
-                        <div className='grid grid-cols-4'>
+                        <p className='mb-2'>Conteúdo relacionado</p>
 
+                        <div className='grid grid-cols-4 gap-4'>
+                            {relatedPosts.map(post => (
+
+                                <RelatedPost
+                                    key={post.frontMatter.id}
+                                    post={post}
+                                />
+
+                            )).slice(0, 4)}
                         </div>
+
                     </div>
                 </div>
 
             </div>
 
             {imgPresentation &&
-                <ImagePresentation setImgPresentation={setImgPresentation} images={images} selectedImg={selectedImg} />
+                <ImagePresentation title={title} setImgPresentation={setImgPresentation} images={images} selectedImg={selectedImg} />
             }
         </>
     )

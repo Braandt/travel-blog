@@ -5,6 +5,7 @@ export default function Document() {
 		<Html lang="en">
 			<Head>
 				<link href="https://api.fontshare.com/v2/css?f[]=erode@400&f[]=tanker@400&f[]=bespoke-serif@400,500&display=swap" rel="stylesheet" />
+				<link rel='icon' href='/images/logocircular1.svg' style={{ borderRadius: '100%' }} />
 			</Head>
 			<body>
 				<Main />

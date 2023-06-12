@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { FaEnvelope, FaInstagram, FaPatreon, FaTwitter, FaYoutube } from 'react-icons/fa'
+import AnimatedLogo from './AnimatedLogo'
 
 export default function Footer() {
 
@@ -23,12 +24,9 @@ export default function Footer() {
     ]
 
     return (
-        <div className="flex flex-col items-center justify-between py-12 px-24 bg-pallete-2 text-white">
+        <div className="h-screen flex flex-col items-center justify-between py-12 px-24 bg-pallete-2 text-white">
 
-            <Link
-                href='/'
-                className="h-40 aspect-square rounded-full bg-white font-serif"
-            ></Link>
+            <AnimatedLogo className='flex-1' />
 
             <p className="font-sans2 my-12 text-center leading-loose max-w-3xl">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nesciunt autem, vel sint reprehenderit distinctio perferendis, corporis asperiores quod tenetur velit quia at est repellat ut explicabo aperiam expedita sapiente debitis.</p>
 

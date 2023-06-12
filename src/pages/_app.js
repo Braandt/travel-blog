@@ -6,9 +6,9 @@ import Head from 'next/head'
 
 export default function App({ Component, pageProps }) {
 	return (
-		<div className='text-pallete-2'>
+		<div className='text-pallete-2 selection:bg-pallete-4 selection:text-white'>
 			<Head>
-				<title>Next and MDX Blog</title>
+				<title>Bike Travel</title>
 			</Head>
 
 			<div>

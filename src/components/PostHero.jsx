@@ -1,16 +1,25 @@
-import Image from "next/image"
-import TitleFlag from "./TitleFlag"
+import { MdLocationOn } from "react-icons/md"
 
-export default function PostHero({ frontMatter }) {
-
-    const { tags, thumbnailUrl } = frontMatter
+export default function PostHero({ date, location, title, thumbnailUrl }) {
 
     return (
-        <div
-            className="h-[80vh] bg-full bg-center glow-image mt-12 mx-12"
-            style={{ backgroundImage: `url(${thumbnailUrl})` }}
-        >
-            <div className="translate-y-1/2">
+        <div className="h-[calc(100vh_-_3rem)] p-12 pb-8">
+            <div className="h-full flex flex-col">
+                <div
+                    className="flex-1 bg-full bg-center glow-image"
+                    style={{ backgroundImage: `url(${thumbnailUrl})` }}
+                >
+                </div>
+                <h1 className='my-2 text-5xl'>{title}</h1>
+                <div className='flex gap-4'>
+                    <div>
+                        {date}
+                    </div>
+                    <div className='flex items-center'>
+                        <MdLocationOn className='text-pallete-4' />
+                        {location}
+                    </div>
+                </div>
             </div>
         </div>
     )

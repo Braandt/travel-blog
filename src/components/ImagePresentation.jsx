@@ -1,23 +1,14 @@
-import { animated, useTransition } from "@react-spring/web";
-import Image from "next/image";
-import { useState } from "react";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { HiXMark } from "react-icons/hi";
+import { animated, useTransition } from "@react-spring/web"
+import Image from "next/image"
+import { useState } from "react"
+import PassButton from "./PassButton"
+import ExitButton from "./ExitButton"
+import { nextImage, prevImage } from "../../utils"
 
-export default function ImagePresentation({ images, setImgPresentation, selectedImg }) {
+export default function ImagePresentation({ title, images, setImgPresentation, selectedImg }) {
 
     const [image, setImage] = useState(selectedImg)
     const [reverse, setReverse] = useState(false)
-
-    const nextImage = () => {
-        setReverse(false)
-        setImage(prevState => (prevState + 1) % images.length)
-    }
-
-    const prevImage = () => {
-        setReverse(true)
-        setImage(prevState => (prevState - 1 + images.length) % images.length)
-    }
 
     const transitions = useTransition([image], {
         initial: { transform: 'translateX(0%)' },
@@ -25,34 +16,6 @@ export default function ImagePresentation({ images, setImgPresentation, selected
         enter: { transform: 'translateX(0%)' },
         leave: { transform: reverse ? 'translateX(100%)' : 'translateX(-100%)' },
     })
-
-
-    const PassButtom = ({ back }) => {
-
-        const style = back ? 'left-0' : 'right-0'
-
-        return (
-            <Button
-                className={`mx-10 absolute top-1/2 -translate-y-1/2 ${style}`}
-                onClick={() => back ? prevImage() : nextImage()}
-            >
-                {back ?
-                    <FaChevronLeft className='w-4 h-4' /> :
-                    <FaChevronRight className='w-4 h-4' />
-                }
-            </Button>
-        )
-    }
-
-    const ExitButton = () => (
-        <Button
-            className='absolute top-0 right-0'
-            onClick={() => setImgPresentation(false)}
-        >
-            <FaChevronLeft className="absolute translate-x-[3px]" />
-            <FaChevronRight className="absolute -translate-x-[3px]" />
-        </Button>
-    )
 
     return (
         <div className='fixed z-50 inset-0 bg-black'>
@@ -73,30 +36,22 @@ export default function ImagePresentation({ images, setImgPresentation, selected
                                 alt={caption}
                                 className='h-full w-fit max-w-full mx-auto object-contain'
                             />
+
+                            <div className='absolute bottom-0 from-black to-transparent bg-gradient-to-t p-10 w-full text-white'>
+                                <p className="font-sans2">{caption}</p>
+                                <small className="tracking-widest">{title}</small>
+                            </div>
                         </animated.div>
                     )
 
                 })}
 
-                <PassButtom />
-                <PassButtom back />
+                <PassButton onClick={() => nextImage(setImage, images, setReverse)} />
+                <PassButton back onClick={() => prevImage(setImage, images, setReverse)} />
 
-                <ExitButton />
+                <ExitButton setImgPresentation={setImgPresentation} />
 
             </div>
         </div >
-    )
-}
-
-export function Button({ children, className, onClick }) {
-    return (
-        <button
-            className={`flex items-center justify-center bg-black outline outline-1 outline-white/50 w-10 aspect-square rounded-full backdrop-blur-2xl bg-opacity-20 text-white transition-all
-            hover:bg-white/10
-            ${className}`}
-            onClick={onClick}
-        >
-            {children}
-        </button>
     )
 }

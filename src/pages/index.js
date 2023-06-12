@@ -4,21 +4,11 @@ import matter from 'gray-matter'
 import Hero from '@/components/Hero'
 import PhotoCarousel from '@/components/PhotoCarousel'
 import LastPosts from '@/components/LastPosts'
-import { sortByDate } from '../../utils'
+import { sortByDate, brasilDataFormat } from '../../utils'
 
-export default function Home({ posts, frontMatter }) {
+export default function Home({ posts }) {
 
-	posts = posts.map(post => (
-		{
-			...post,
-			frontMatter: {
-				...post.frontMatter,
-				date: new Date(post.frontMatter.date).toLocaleDateString('pt-BR', {
-					dateStyle: 'long'
-				})
-			}
-		}
-	))
+	posts = brasilDataFormat(posts)
 
 	return (
 		<div>
@@ -28,6 +18,7 @@ export default function Home({ posts, frontMatter }) {
 			<PhotoCarousel />
 
 			<LastPosts posts={posts} />
+
 		</div>
 	)
 }

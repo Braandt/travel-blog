@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import { useTransition, animated } from '@react-spring/web'
 import Link from 'next/link'
 import { MdLocationOn } from 'react-icons/md'
-import ReadPostButton from './ReadPostButton'
 import { BsChevronCompactLeft, BsChevronCompactRight, BsPause, BsPlay } from 'react-icons/bs'
+import ReadPostButton from './ReadPostButton'
 
 export default function Hero({ posts }) {
 
@@ -80,7 +80,7 @@ export default function Hero({ posts }) {
                         <div className="absolute bg-black w-full h-full opacity-[0.15]"></div>
 
                         <Link
-                            href={`/blog/${post.slug}`}
+                            href={`/blog/${posts[item].slug}`}
                             className="absolute flex flex-col items-center group p-24 max-w-screen-lg"
                             onMouseEnter={() => setPlayCorousel(false)}
                             onMouseLeave={() => setPlayCorousel(true)}

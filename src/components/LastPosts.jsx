@@ -5,20 +5,23 @@ import TitleFlag from "./TitleFlag";
 
 export default function LastPosts({ posts }) {
 
-    const lastPosts = posts.slice(0, 4)
+    const lastPosts = posts.slice(0, 5)
 
     return (
-        <div className="relative mt-12 mb-32">
+        <div className="mt-12 mb-32">
 
-            <TitleFlag text='últimas histórias' />
+            <TitleFlag
+                text='últimas histórias'
+                className='mx-auto text-xl'
+            />
 
-            <div className="py-8 flex justify-center w-full">
-                <p className="text-center font-sans2 max-w-lg">
+            <div className="mt-4 mb-12 flex justify-center w-full">
+                <p className="text-center font-sans2 max-w-2xl">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius accusamus aliquam laudantium, esse ea laboriosam? Maiores nesciunt tempora ratione. Cupiditate.
                 </p>
             </div>
 
-            <div className="grid grid-cols-4 px-32 pb-12">
+            <div className="grid grid-cols-5 gap-8 px-32 pb-12">
                 {lastPosts.map((post, index) => {
 
                     const { title, description, date, location, thumbnailUrl } = post.frontMatter
@@ -28,32 +31,30 @@ export default function LastPosts({ posts }) {
                             href={'/blog/' + post.slug}
                             passHref
                             key={index}
-                            className="relative group"
+                            className="group"
                         >
-                            <div className="relative overflow-clip">
-                                <div className="absolute bg-black inset-0 opacity-40 z-10"></div>
-                                <Image
-                                    src={thumbnailUrl}
-                                    className='object-cover w-full aspect-square origin-center transition-all duration-500
-                                group-hover:scale-110'
-                                    alt=''
-                                    width={500}
-                                    height={500}
-                                    style={{ objectFit: 'cover' }}
-                                />
+                            <small className="tracking-wide opacity-70">{date}</small>
+                            <Image
+                                src={thumbnailUrl}
+                                className='object-cover my-2 w-full aspect-square origin-center transition-all duration-200
+                                group-hover:scale-[102%]'
+                                alt=''
+                                width={500}
+                                height={500}
+                                style={{ objectFit: 'cover' }}
+                            />
+
+
+                            <h5 className=''>{title}</h5>
+
+                            <div className="flex items-center font-sans2">
+
+                                {location && <MdLocationOn />}
+                                <div>{location}</div>
+
                             </div>
 
-                            <div className="flex flex-col absolute justify-end items-center pb-12 inset-0 text-white z-20 drop-shadow-lg">
-                                <h5 className=''>{title}</h5>
-                                <p className='font-sans2'>{description}</p>
-                                <div className="flex justify-between font-sans2">
-                                    <small>{date}</small>
-                                    <div className="flex items-center">
-                                        <MdLocationOn />
-                                        <small>{location}</small>
-                                    </div>
-                                </div>
-                            </div>
+
                         </Link>
                     )
                 })}
