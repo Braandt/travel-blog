@@ -9,7 +9,7 @@ export default function MultImages({ setImgPresentation, images, selectedImages,
         return (
             <div className="relative w-full">
                 <Image
-                    src={src}
+                    src={url}
                     width={1000}
                     height={1000}
                     className="object-cover h-full object-center cursor-zoom-in"
@@ -33,7 +33,7 @@ export default function MultImages({ setImgPresentation, images, selectedImages,
             ${captionDisabled ? 'mb-12 mt-2' : 'my-12'}`}
         >
             {selectedImages.map(img => (
-                <Img key={images[img].src} selectedImage={images[img]} />
+                <Img key={images[img].url} selectedImage={images[img]} />
             ))}
 
         </div>

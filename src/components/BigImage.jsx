@@ -10,7 +10,7 @@ export default function BigImage({ setImgPresentation, selectedImage, images, se
             ${captionDisabled ? 'mt-12 mb-2' : 'my-12'}`}>
 
             <Image
-                src={src}
+                src={url}
                 width={1000}
                 height={1000}
                 className="w-full object-cover object-center cursor-zoom-in"
