@@ -23,8 +23,10 @@ export default function Nav() {
                 <div className="flex items-center">
                     {/* Left */}
                     <div className="flex gap-12 justify-end pr-12 w-80">
+
                         <NavItem href='/posts' name='posts' />
                         <NavItem href='/' name='photos' />
+
                     </div>
 
                     {/* Logo */}
@@ -32,10 +34,12 @@ export default function Nav() {
                         <Logo className='mt-12' />
                     </Link>
 
+                    {/* Right */}
                     <div className="flex gap-12 pl-12 w-80">
-                        {/* Right */}
+
                         <NavItem href='/' name='about' />
-                        <NavItem href='/' name='shop' />
+                        <NavItem href='/help' name='ajudar' />
+
                     </div>
                 </div>
 

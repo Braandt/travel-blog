@@ -28,3 +28,12 @@ export const prevImage = (setImage, imagesArr, setReverse = () => null) => {
     setReverse(true)
     setImage(prevState => (prevState - 1 + imagesArr.length) % imagesArr.length)
 }
+
+export const copyToClipboard = async (text, alertText) => {
+    try {
+        await navigator.clipboard.writeText(text)
+        alert(alertText)
+    } catch (err) {
+        console.error('Failed to copy: ', err)
+    }
+}

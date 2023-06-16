@@ -10,7 +10,7 @@ export default function PostPhotoCarousel({ images, setImgPresentation, setSelec
     const ref = useRef()
     const [current, setCurrent] = useState(0)
     const [offset, setOffset] = useState(0)
-    const [widthArr, setWidthArr] = useState([])
+    const [widthArr, setWidthArr] = useState([0])
 
     const nextImage = () => {
         if (current != images.length - 1) {
@@ -36,23 +36,25 @@ export default function PostPhotoCarousel({ images, setImgPresentation, setSelec
     }
 
     const handleClick = (index) => {
-        setScrollPosition(document.documentElement.scrollTop)
+        setScrollPosition(document.documentElement.scrollTop / document.documentElement.offsetHeight)
         setImgPresentation(true)
         setSelectedImg(index)
     }
 
     return (
-        <div className="relative self-center flex justify-end h-[80vh] w-screen py-12">
+        <div className="relative self-center flex justify-end h-[80vh] w-screen py-12 pl-4">
 
             <div
                 style={{ gap: `${GAP}px`, transform: `translateX(-${offset}px)` }}
-                className='flex h-full max-w-7xl gap-4 transition-all'
+                className='flex h-full w-full gap-4 transition-all
+                md:w-[80%]'
             >
-                {images.map((img, index) => (
+                {images[0] && images.map((img, index) => (
+
                     <div
                         ref={index == current ? ref : null}
                         key={img.id}
-                        className='shrink-0'
+                        className='shrink-0 max-w-[calc(100vw_-_2rem)]'
                         onClick={() => handleClick(index)}
                     >
                         <Image
@@ -60,8 +62,9 @@ export default function PostPhotoCarousel({ images, setImgPresentation, setSelec
                             width={1200}
                             height={1200}
                             alt={img.caption}
-                            className="h-full w-fit object-contain cursor-zoom-in"
+                            className="h-full w-fit max-w-screen object-contain cursor-zoom-in"
                         />
+
                     </div>
                 ))}
             </div>

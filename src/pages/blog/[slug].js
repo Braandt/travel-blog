@@ -5,18 +5,19 @@ import { serialize } from 'next-mdx-remote/serialize'
 import { MDXRemote } from 'next-mdx-remote'
 import PostHero from '@/components/sections/PostHero'
 import TitleFlag from '@/components/TitleFlag'
-import BigImage from '@/components/postsComponents/BigImage'
 import MultImages from '@/components/postsComponents/MultImages'
 import { useEffect, useState } from 'react'
 import ImagePresentation from '@/components/postsComponents/ImagePresentation'
-import RelatedPost from '@/components/sections/RelatedPost'
 import PostPhotoCarousel from '@/components/postsComponents/PostPhotoCarousel'
+import RelatedPosts from '@/components/sections/RelatedPosts'
+import PostsNav from '@/components/sections/PostsNav'
+import PostGreeting from '@/components/sections/PostGreeting'
 
 const components = {
-    h1: (props) => <p className='font-sans tracking-wide text-3xl' {...props}></p>,
-    p: (props) => <p className='text-justify' {...props}></p>,
+    h1: (props) => <p className='max-w-4xl w-full self-center font-sans tracking-wide text-3xl' {...props}></p>,
+    h2: (props) => <p className='max-w-4xl w-full self-center font-sans tracking-wide text-2xl' {...props}></p>,
+    p: (props) => <p className='max-w-4xl w-full self-center text-justify' {...props}></p>,
     TitleFlag,
-    BigImage,
     MultImages,
     PostPhotoCarousel
 }
@@ -34,12 +35,6 @@ const PostPage = ({ frontMatter, slug, mdxSource, posts }) => {
     const [images, setImages] = useState([])
     const [scrollPosition, setScrollPosition] = useState(0)
 
-    let relatedPosts = []
-
-    posts.filter(item => item.frontMatter.id != id).forEach(post => {
-        post.frontMatter.tags.some(tag => tags.includes(tag)) && relatedPosts.push(post)
-    })
-
     const fetchImagesData = () => {
 
         fetch(`/images/posts/${slug}/images.json`)
@@ -50,7 +45,7 @@ const PostPage = ({ frontMatter, slug, mdxSource, posts }) => {
 
     useEffect(() => {
         fetchImagesData()
-    }, [])
+    }, [slug])
 
     const scope = { images, setImgPresentation, setSelectedImg, setScrollPosition }
 
@@ -72,27 +67,18 @@ const PostPage = ({ frontMatter, slug, mdxSource, posts }) => {
                         <p className='font-serif2 text-xl font-semibold'>{intro}</p>
                     </div>
 
-                    <div className='max-w-4xl mx-auto font-serif2 tracking-wide leading-relaxed flex flex-col'>
+                    <div className='font-serif2 tracking-wide leading-relaxed flex flex-col'>
                         {images.length > 0 &&
                             <MDXRemote {...mdxSource} components={components} scope={scope} ></MDXRemote>
                         }
                     </div>
 
-                    <div className='mt-12'>
-                        <p className='mb-2'>Conteúdo relacionado</p>
+                    <PostGreeting />
 
-                        <div className='grid grid-cols-4 gap-4'>
-                            {relatedPosts.map(post => (
+                    <PostsNav posts={posts} id={id} />
 
-                                <RelatedPost
-                                    key={post.frontMatter.id}
-                                    post={post}
-                                />
+                    <RelatedPosts posts={posts} frontMatter={frontMatter} />
 
-                            )).slice(0, 4)}
-                        </div>
-
-                    </div>
                 </div>
 
             </div>

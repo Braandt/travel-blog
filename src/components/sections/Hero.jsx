@@ -12,15 +12,6 @@ export default function Hero({ posts }) {
     const [reverse, setReverse] = useState(false)
     const [playCorousel, setPlayCorousel] = useState(true)
 
-    const fetchImages = () => {
-        posts.map(post => {
-            fetch(post.frontMatter.thumbnailUrl)
-                .then(res => console.log(res))
-        })
-    }
-
-    useEffect(() => fetchImages(), [])
-
     const handleNext = () => {
         nextImage(setPost, posts, setReverse)
         setPlayCorousel(false)

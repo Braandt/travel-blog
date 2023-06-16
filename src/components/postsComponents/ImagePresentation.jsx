@@ -32,6 +32,7 @@ export default function ImagePresentation({ title, images, setImgPresentation, s
                         >
                             <Image
                                 src={url}
+                                quality={100}
                                 fill
                                 alt={caption}
                                 className='h-full w-fit max-w-full mx-auto object-contain'

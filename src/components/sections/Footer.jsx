@@ -7,9 +7,10 @@ export default function Footer() {
     const year = new Date().getFullYear()
 
     const iconStyle = 'w-8 h-8 text-pallete-4 hover:text-pallete-3'
+
     const socials = [
         { name: 'youtube', url: 'https://www.youtube.com', icon: <FaYoutube className={iconStyle} /> },
-        { name: 'instagram', url: 'https://www.instagram.com', icon: <FaInstagram className={iconStyle} /> },
+        { name: 'instagram', url: 'https://www.instagram.com/pedalaleo/', icon: <FaInstagram className={iconStyle} /> },
         { name: 'patreon', url: 'https://www.patreon.com', icon: <FaPatreon className={iconStyle} /> },
         { name: 'twitter', url: 'https://www.twitter.com', icon: <FaTwitter className={iconStyle} /> },
         { name: 'email', url: 'mailto: leoobrandt@hotmail.com', icon: <FaEnvelope className={iconStyle} /> },
@@ -57,7 +58,7 @@ export default function Footer() {
                 ))}
             </div>
 
-            <small className='text-white/40 tracking-widest'>Copyright &copy; {year} - Desenvolvido pro Leonardo Brandt</small>
+            <small className='text-white opacity-40 tracking-widest'>Copyright &copy; {year} - Desenvolvido pro <a className='border-b-2' href='https://leobrandt.vercel.app/' target='_blank'>Leonardo Brandt</a></small>
 
         </div>
     )

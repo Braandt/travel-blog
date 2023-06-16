@@ -11,7 +11,8 @@ module.exports = {
       'sans': 'Tanker',
       'sans2': 'montserrat',
       'serif': 'Erode',
-      'serif2': 'Bespoke Serif'
+      'serif2': 'Bespoke Serif',
+      'script': 'Dancing Script'
     },
     extend: {
       colors: {

@@ -1,43 +1,53 @@
 import Image from "next/image";
+import AnimatedLogo from "../logo/AnimatedLogo";
 
-export default function MultImages({ setImgPresentation, images, selectedImages, setSelectedImg, captionDisabled, setScrollPosition }) {
+export default function MultImages({
+    setImgPresentation,
+    images,
+    selectedImages,
+    setSelectedImg,
+    template = selectedImages.map(() => 1),
+    captionDisabled,
+    setScrollPosition
+}) {
 
-    const Img = ({ selectedImage }) => {
-
-        const { url, caption } = images[selectedImage]
-
-        const handleClick = () => {
-            setScrollPosition(document.documentElement.scrollTop / document.documentElement.offsetHeight)
-            setImgPresentation(true)
-            setSelectedImg(selectedImage)
-        }
-
-        return (
-            <div className="w-full">
-                <Image
-                    src={url}
-                    width={1000}
-                    height={1000}
-                    className="object-cover h-full object-center cursor-zoom-in"
-                    alt={caption}
-                    onClick={handleClick}
-                />
-                {!captionDisabled &&
-                    <div>
-                        <small className="font-sans2 font-semibold">{caption}</small>
-                    </div>
-                }
-            </div>
-        )
+    const handleClick = (selectedImg) => {
+        setScrollPosition(document.documentElement.scrollTop / document.documentElement.offsetHeight)
+        setImgPresentation(true)
+        setSelectedImg(selectedImg)
     }
 
     return (
-        <div className={`w-[110%] self-center flex gap-4
-            ${captionDisabled ? 'mb-12 mt-2' : 'my-12'}`}
+        <div
+            className='grid gap-4 items-center grid-cols-12 my-12'
         >
-            {selectedImages.map(img => (
-                <Img key={images[img].url} selectedImage={img} />
-            ))}
+
+            {images[0] && selectedImages.map((image, index) => {
+
+                const { id, url, caption } = images[image]
+
+                return (
+                    <div
+                        key={id}
+                        style={{ gridColumn: `auto/span ${12 / template[index]}` }}
+                        className="h-full"
+                    >
+                        <Image
+                            src={url}
+                            width={2000}
+                            height={2000}
+                            className="object-contain max-h-screen object-center cursor-zoom-in"
+                            alt={caption}
+                            onClick={() => handleClick(image)}
+                        />
+                        {!captionDisabled &&
+                            <div>
+                                <small className="font-sans2 font-semibold">{caption}</small>
+                            </div>
+                        }
+                    </div>
+                )
+            })}
 
         </div>
     )
