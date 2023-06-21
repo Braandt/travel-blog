@@ -44,7 +44,7 @@ export default function help() {
                         link='/'
                         text='Fazer parte do patreon'
                         icon={<FaPatreon className="text-3xl" fill="#fff" />}
-                        className='bg-[#f23f49] hover:shadow-2xl'
+                        className='bg-[#f23f49]'
                     />
 
                     <PixButton />
@@ -77,7 +77,7 @@ export function DonateButton({ link, icon, text, className }) {
             href={link}
             target="_blank"
             className={`flex whitespace-nowrap justify-center text-white font-sans2 uppercase font-semibold items-center text-lg gap-4 py-4 px-12 rounded-full shadow-md transition-all
-                hover:scale-105
+                hover:scale-105 hover:shadow-2xl
                 ${className}`}
         >
             {icon}
