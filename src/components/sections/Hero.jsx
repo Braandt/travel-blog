@@ -24,9 +24,9 @@ export default function Hero({ posts }) {
 
     const transitions = useTransition([post], {
         initial: { transform: 'translateX(0%)' },
-        from: { transform: reverse ? 'translateX(-100%)' : 'translateX(100%)' },
-        enter: { transform: 'translateX(0%)' },
-        leave: { transform: reverse ? 'translateX(75%)' : 'translateX(-75%)' },
+        from: { transform: reverse ? 'translateX(-100%)' : 'translateX(100%)', opacity: 0 },
+        enter: { transform: 'translateX(0%)', opacity: 1 },
+        leave: { transform: reverse ? 'translateX(50%)' : 'translateX(-50%)', opacity: 0 },
     })
 
     const timeoutRef = useRef(null)
@@ -56,7 +56,9 @@ export default function Hero({ posts }) {
 
     return (
         <div
-            className="relative flex text-white h-screen overflow-clip"
+            className="relative flex overflow-clip text-white bg-pallete-2 border-pallete-2
+            h-[75vh] border-[12px]
+            md:h-screen md:border-none"
         >
 
             {transitions((style, item) => {
@@ -65,41 +67,68 @@ export default function Hero({ posts }) {
 
                 return (
                     <animated.div
-                        className='absolute bg-full flex items-center justify-center w-full h-full text-center bg-center'
-                        style={{ ...style, backgroundImage: `url(${thumbnailUrl})` }}
+                        className='absolute w-full h-full'
+                        style={style}
                     >
-                        <div className="absolute bg-black w-full h-full opacity-[0.15]"></div>
-
-                        <Link
-                            href={`/blog/${posts[item].slug}`}
-                            className="absolute flex flex-col items-center group p-24 max-w-screen-lg"
-                            onMouseEnter={() => setPlayCorousel(false)}
-                            onMouseLeave={() => setPlayCorousel(true)}
+                        <div
+                            className='flex flex-col h-full items-center justify-center text-center
+                            md:flex-row'
                         >
+                            <div
+                                className='bg-cover bg-center
+                                w-full h-3/5 rounded-xl
+                                md:absolute md:inset-0 md:h-full md:rounded-none'
+                                style={{ backgroundImage: `url(${thumbnailUrl})` }}
+                            ></div>
 
-                            <div className="flex text-xl tracking-wider gap-6 drop-shadow-lg">
-                                {'blog post'}
-                                <div className='flex items-center'>
-                                    <MdLocationOn />
-                                    {location}
+                            <div className="bg-black w-full h-full mix-blend-overlay opacity-50
+                            hidden
+                            md:block md:absolute"
+                            ></div>
+
+                            <Link
+                                href={`/blog/${posts[item].slug}`}
+                                className="flex flex-col items-center justify-center group text-amber-400 max-w-screen-lg flex-1
+                                md:absolute md:w-4/6"
+                                onMouseEnter={() => setPlayCorousel(false)}
+                                onMouseLeave={() => setPlayCorousel(true)}
+                            >
+
+                                <div
+                                    className="flex tracking-wider gap-6 drop-shadow-[2px_2px_0_rgb(0,0,0)]
+                                    md:text-xl"
+                                >
+                                    {'blog post'}
+                                    <div className='flex items-center'>
+                                        <MdLocationOn />
+                                        {location}
+                                    </div>
                                 </div>
-                            </div>
 
-                            <h1 className="text-8xl uppercase mt-2 mb-4 drop-shadow-lg tracking-widest">
-                                {title}
-                            </h1>
+                                <h1
+                                    className="uppercase mt-2 mb-4  tracking-widest
+                                    text-3xl drop-shadow-[2px_2px_0_rgb(0,0,0)]
+                                    md:text-8xl md:drop-shadow-[4px_4px_0_rgb(0,0,0)]"
+                                >
+                                    {title}
+                                </h1>
 
-                            <div className="tracking-widest text-lg gap-6 mb-4 drop-shadow-lg">
-                                {description}
-                            </div>
+                                <div
+                                    className="tracking-widest gap-6 mb-4 drop-shadow-[2px_2px_0_rgb(0,0,0)]
+                                    md:text-lg"
+                                >
+                                    {description}
+                                </div>
 
-                            <TitleFlag
-                                text='Ler Artigo'
-                                className='!px-12 text-xl !text-black bg-white mix-blend-screen transition-all
-                                group-hover:bg-orange-400 group-hover:mix-blend-normal group-hover:text-black'
-                            />
+                                <TitleFlag
+                                    text='Ler Post'
+                                    className='!text-black !bg-amber-50 mix-blend-screen transition-all
+                                    group-hover:!bg-amber-400 group-hover:mix-blend-normal
+                                    md:text-xl md:!px-12'
+                                />
 
-                        </Link>
+                            </Link>
+                        </div>
                     </animated.div>
                 )
             })}
@@ -125,14 +154,20 @@ export default function Hero({ posts }) {
                 />
             </button>
 
-            <div className='absolute bottom-0 flex items-center justify-center gap-4 w-full h-12 mb-12'>
+            <div
+                className='absolute bottom-0 flex items-center justify-center gap-4 w-full translate-y-full
+                h-24 text-pallete-2
+                md:mb-12 md:translate-y-0 md:h-12 md:text-white'
+            >
                 {playCorousel ?
                     <BsPause onClick={() => setPlayCorousel(false)} /> :
                     <BsPlay onClick={() => setPlayCorousel(true)} />}
                 {posts.map((p, i) => (
                     <div
                         key={i}
-                        className={`bg-white aspect-square w-2 rounded-full backdrop-blur-xl transition-all
+                        className={`aspect-square w-2 rounded-full backdrop-blur-xl transition-all
+                        bg-pallete-2
+                        md:bg-white
                         ${i === post ? 'bg-opacity-100 scale-125' : 'bg-opacity-40'}`}
                     ></div>
                 ))}

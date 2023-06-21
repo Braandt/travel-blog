@@ -16,12 +16,14 @@ export default function LastPosts({ posts }) {
             />
 
             <div className="mt-4 mb-12 flex justify-center w-full">
-                <p className="text-center font-sans2 max-w-2xl">
+                <p className="text-center font-sans2 max-w-2xl mx-6">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius accusamus aliquam laudantium, esse ea laboriosam? Maiores nesciunt tempora ratione. Cupiditate.
                 </p>
             </div>
 
-            <div className="grid grid-cols-5 gap-8 px-32 pb-12">
+            <div
+                className="grid gap-8 pb-12 px-6
+                md:px-32 md:grid-cols-5">
                 {lastPosts.map((post, index) => {
 
                     const { title, description, date, location, thumbnailUrl } = post.frontMatter
@@ -36,7 +38,7 @@ export default function LastPosts({ posts }) {
                             <small className="tracking-wide opacity-70">{date}</small>
                             <Image
                                 src={thumbnailUrl}
-                                className='object-cover my-2 w-full aspect-square origin-center transition-all duration-200
+                                className='object-cover my-2 w-full aspect-square origin-center transition-all duration-200 rounded-lg
                                 group-hover:scale-[102%]'
                                 alt=''
                                 width={500}

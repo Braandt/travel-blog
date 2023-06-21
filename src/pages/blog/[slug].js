@@ -12,6 +12,8 @@ import PostPhotoCarousel from '@/components/postsComponents/PostPhotoCarousel'
 import RelatedPosts from '@/components/sections/RelatedPosts'
 import PostsNav from '@/components/sections/PostsNav'
 import PostGreeting from '@/components/sections/PostGreeting'
+import Head from 'next/head'
+import { mainTitle } from '../../../utils'
 
 const components = {
     h1: (props) => <p className='max-w-4xl w-full self-center font-sans tracking-wide text-3xl' {...props}></p>,
@@ -49,11 +51,20 @@ const PostPage = ({ frontMatter, slug, mdxSource, posts }) => {
 
     const scope = { images, setImgPresentation, setSelectedImg, setScrollPosition }
 
+    const pageTitle = mainTitle + ' ' + title
+
     return (
         <>
+            <Head>
+                <title>{pageTitle}</title>
+            </Head>
             <PostHero date={fomatedDate} title={title} location={location} thumbnailUrl={thumbnailUrl} />
 
-            <div className='px-12 mb-24 overflow-hidden'>
+            <div
+                className='mb-24 overflow-hidden
+                px-4
+                md:px-12'
+            >
 
                 <div className='mt-4 max-w-5xl mx-auto'>
 
@@ -64,10 +75,13 @@ const PostPage = ({ frontMatter, slug, mdxSource, posts }) => {
 
                     <div className='flex mb-8 gap-4'>
                         <div className='w-2 bg-pallete-2'></div>
-                        <p className='font-serif2 text-xl font-semibold'>{intro}</p>
+                        <p
+                            className='font-serif2 font-semibold
+                            md:text-xl'
+                        >{intro}</p>
                     </div>
 
-                    <div className='font-serif2 tracking-wide leading-relaxed flex flex-col'>
+                    <div className='font-serif2 tracking-wide leading-relaxed flex flex-col my-4'>
                         {images.length > 0 &&
                             <MDXRemote {...mdxSource} components={components} scope={scope} ></MDXRemote>
                         }

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  background-color: #F2F1EE;
+  background-color: #fffbeb;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -17,14 +17,10 @@ body {
   scrollbar-width: none;  /* Firefox */
 }
 
-.bg-full {
-    background-size: cover !important;
-    background-repeat: no-repeat;
-}
-
 .glow-image {
     position: relative;
 }
+
 .glow-image::after {
     width: 100%;
     height: 100%;
@@ -64,4 +60,16 @@ body {
 .inline-link {
   border-bottom: 1px solid #d9376e;
   color: #d9376e;
+}
+
+.parallax-container {
+  perspective: 3px;
+}
+
+.parallax-layer1 {
+  transform: translateZ(-1px);
+}
+
+.parallax-layer2 {
+  transform: translateZ(1px);
 }

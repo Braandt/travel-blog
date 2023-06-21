@@ -17,7 +17,10 @@ export default function PhotoCarousel() {
     useEffect(() => fetchImages(), [])
 
     return (
-        <div className="flex h-[70vh] gap-8 overflow-hidden py-24">
+        <div className="flex gap-8 overflow-hidden py-24
+        h-[50vh]
+        md:h-[70vh]"
+        >
 
             <ImagePortion images={images} />
             <ImagePortion images={images} />

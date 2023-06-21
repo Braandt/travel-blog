@@ -17,15 +17,22 @@ export default function Nav() {
         <>
             <div className="bg-pallete-2 h-12"></div>
             <nav
-                className={`fixed top-0 w-full left-0 flex items-center justify-center h-12 bg-pallete-2 tracking-widest text-white  z-50 transition-all duration-300
-            ${navVisible ? 'translate-y-0' : '-translate-y-[100px]'}`}>
+                className='fixed top-0 w-full left-0 flex items-center justify-center h-12 bg-pallete-2 tracking-widest z-50 transition-all duration-300 text-amber-50'
+                style={{ transform: navVisible ? 'translateY(0)' : 'translateY(-100px)' }}
+            >
 
-                <div className="flex items-center">
+                <div className="flex items-center w-full
+                max-w-sm
+                md:max-w-lg"
+                >
                     {/* Left */}
-                    <div className="flex gap-12 justify-end pr-12 w-80">
+                    <div className='flex justify-between flex-1
+                    mr-6
+                    md:mr-12'
+                    >
 
                         <NavItem href='/posts' name='posts' />
-                        <NavItem href='/' name='photos' />
+                        <NavItem href='/photos' name='photos' />
 
                     </div>
 
@@ -35,7 +42,10 @@ export default function Nav() {
                     </Link>
 
                     {/* Right */}
-                    <div className="flex gap-12 pl-12 w-80">
+                    <div className="flex justify-between flex-1
+                    ml-6
+                    md:ml-12"
+                    >
 
                         <NavItem href='/' name='about' />
                         <NavItem href='/help' name='ajudar' />
@@ -50,7 +60,10 @@ export default function Nav() {
 
 export function NavItem({ href, name }) {
     return (
-        <Link href={href}>
+        <Link
+            href={href}
+            className="hover:text-amber-300"
+        >
             {name}
         </Link>
     )

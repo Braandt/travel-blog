@@ -1,7 +1,7 @@
 import Image from "next/image"
-import Link from "next/link"
-import { useEffect, useRef, useState } from "react"
+import { useRef, useState } from "react"
 import PassButton from "../UI/PassButton"
+import AnimatedLogo from "../logo/AnimatedLogo"
 
 export default function PostPhotoCarousel({ images, setImgPresentation, setSelectedImg, setScrollPosition }) {
 
@@ -42,11 +42,12 @@ export default function PostPhotoCarousel({ images, setImgPresentation, setSelec
     }
 
     return (
-        <div className="relative self-center flex justify-end h-[80vh] w-screen py-12 pl-4">
+        <div className="relative self-center flex justify-end h-[80vh] w-screen my-4 py-12 pl-4">
 
             <div
                 style={{ gap: `${GAP}px`, transform: `translateX(-${offset}px)` }}
-                className='flex h-full w-full gap-4 transition-all
+                className='flex h-full gap-4 transition-all duration-500
+                w-full
                 md:w-[80%]'
             >
                 {images[0] && images.map((img, index) => (
@@ -54,16 +55,29 @@ export default function PostPhotoCarousel({ images, setImgPresentation, setSelec
                     <div
                         ref={index == current ? ref : null}
                         key={img.id}
-                        className='shrink-0 max-w-[calc(100vw_-_2rem)]'
+                        className='relative shrink-0 
+                        max-w-[calc(100vw_-_2rem)]
+                        md:max-w-[80%]'
                         onClick={() => handleClick(index)}
                     >
+                        <div className="absolute inset-0 flex items-center justify-center -z-10">
+                            <AnimatedLogo className='h-24' />
+                        </div>
+
                         <Image
                             src={img.url}
                             width={1200}
                             height={1200}
                             alt={img.caption}
-                            className="h-full w-fit max-w-screen object-contain cursor-zoom-in"
+                            className='h-full w-fit max-w-screen object-contain cursor-zoom-in rounded-xl'
                         />
+
+                        <div
+                            className={`absolute w-full h-full top-0 left-0 bg-black rounded-xl transition-all mix-blend-hue duration-500
+                            hidden
+                            md:block
+                            ${index == current ? 'bg-opacity-0' : 'bg-opacity-100'}`}
+                        ></div>
 
                     </div>
                 ))}

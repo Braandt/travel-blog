@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@headlessui/react": "^1.7.15",
     "@react-spring/web": "^9.7.2",
     "autoprefixer": "10.4.14",
     "gray-matter": "^4.0.3",

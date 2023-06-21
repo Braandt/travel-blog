@@ -2,7 +2,7 @@ export const sortByDate = (a, b) => {
     return new Date(b.frontMatter.date) - new Date(a.frontMatter.date)
 }
 
-export const brasilDataFormat = (posts) => {
+export const brazilDataFormat = (posts) => {
     var arr
     arr = posts.map(post => (
         {
@@ -37,3 +37,5 @@ export const copyToClipboard = async (text, alertText) => {
         console.error('Failed to copy: ', err)
     }
 }
+
+export var mainTitle = 'PedalaLeo 🚲'

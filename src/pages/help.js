@@ -4,6 +4,8 @@ import Link from "next/link"
 import Image from "next/image"
 import { FaPatreon, FaPaypal } from "react-icons/fa"
 import PixButton from "@/components/UI/PixButton"
+import Head from "next/head"
+import { mainTitle } from "../../utils"
 
 export default function help() {
 
@@ -11,8 +13,13 @@ export default function help() {
         { id: 1, href: 'https://www.savethechildren.org/', image: '/images/charity/save-the-children.svg', alt: 'save-the-children' }
     ]
 
+    const pageTitle = mainTitle + ' Ajudar'
+
     return (
-        <div className=''>
+        <>
+            <Head>
+                <title>{pageTitle}</title>
+            </Head>
 
             <PagesHero header='🚲 Ajude a manter a roda girando 💸' subheader='Se gostou do meu conteúdo, ajude a manter essa experiência acontecendo para que eu possa trazer mais inforamação e insipiração para quem gosta de aventura' />
 
@@ -20,7 +27,7 @@ export default function help() {
             <div className="grid grid-cols-3 items-center bg-green-400 px-24 py-12 transition-all">
 
                 <div className="col-span-2 text-center flex justify-center w-full">
-                    <p className="max-w-lg text-2xl tracking-wider">
+                    <p className="max-w-lg text-3xl tracking-wider">
                         Faça uma doação única ou periódica de qualquer valor ou assine meu patreon para receber conteúdo exclusivo
                     </p>
                 </div>
@@ -45,7 +52,7 @@ export default function help() {
 
             </div>
 
-            <div className="flex flex-col items-center py-12">
+            <div className="flex flex-col items-center py-24">
                 <h1 className="text-3xl">
                     Parte do dinheiro vai para instituições de caridade
                 </h1>
@@ -60,7 +67,7 @@ export default function help() {
                 </div>
             </div>
 
-        </div>
+        </>
     )
 }
 
@@ -83,7 +90,7 @@ export function Charity({ href, image, alt }) {
     return (
         <Link
             href={href}
-            className="bg-[#fff] rounded-md p-6"
+            className="bg-[#fff] rounded-3xl p-6 shadow-md"
             target="_blank">
             <Image
                 src={image}

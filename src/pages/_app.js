@@ -8,7 +8,7 @@ export default function App({ Component, pageProps }) {
 	return (
 		<div className='text-pallete-2 selection:bg-pallete-4 selection:text-white'>
 			<Head>
-				<title>Bike Travel</title>
+				<title>PedalaLeo</title>
 			</Head>
 
 			<div>

@@ -2,7 +2,7 @@ import TitleFlag from '../TitleFlag'
 
 export default function CTA() {
     return (
-        <div className="relative bg-pallete-3 py-3">
+        <div className="relative bg-pallete-3 py-8">
 
             <TitleFlag
                 className='absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xl z-10'
@@ -15,9 +15,9 @@ export default function CTA() {
                     <p className=" tracking-widest text-3xl text-center max-w-lg">Assine as newsletters para receber as próximas histórias e fotos no seu email</p>
                 </div>
 
-                <div className="rounded-3xl overflow-clip">
+                <div className="rounded-3xl px-6 py-2 bg-[#fff] overflow-clip">
 
-                    <iframe src="https://leoobrandt.substack.com/embed" width="480" height="320"></iframe>
+                    <iframe src="https://leoobrandt.substack.com/embed"></iframe>
 
                     {/* <form>
                             <label htmlFor="email">
@@ -39,6 +39,6 @@ export default function CTA() {
 
             </div>
 
-        </div>
+        </div >
     )
 }

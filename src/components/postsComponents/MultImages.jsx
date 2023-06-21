@@ -1,5 +1,4 @@
 import Image from "next/image";
-import AnimatedLogo from "../logo/AnimatedLogo";
 
 export default function MultImages({
     setImgPresentation,
@@ -19,7 +18,7 @@ export default function MultImages({
 
     return (
         <div
-            className='grid gap-4 items-center grid-cols-12 my-12'
+            className='grid gap-4 items-center my-12'
         >
 
             {images[0] && selectedImages.map((image, index) => {

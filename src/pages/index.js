@@ -4,11 +4,11 @@ import matter from 'gray-matter'
 import Hero from '@/components/sections/Hero'
 import PhotoCarousel from '@/components/PhotoCarousel'
 import LastPosts from '@/components/sections/LastPosts'
-import { sortByDate, brasilDataFormat } from '../../utils'
+import { sortByDate, brazilDataFormat } from '../../utils'
 
 export default function Home({ posts }) {
 
-	posts = brasilDataFormat(posts)
+	posts = brazilDataFormat(posts)
 
 	return (
 		<div>

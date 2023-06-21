@@ -4,6 +4,7 @@ import { useState } from "react"
 import PassButton from "../UI/PassButton"
 import ExitButton from "../UI/ExitButton"
 import { nextImage, prevImage } from "../../../utils"
+import AnimatedLogo from "../logo/AnimatedLogo"
 
 export default function ImagePresentation({ title, images, setImgPresentation, selectedImg, scrollPosition }) {
 
@@ -30,6 +31,11 @@ export default function ImagePresentation({ title, images, setImgPresentation, s
                             className='absolute inset-0'
                             style={style}
                         >
+
+                            <div className="absolute inset-0 flex items-center justify-center -z-10">
+                                <AnimatedLogo className='h-24' />
+                            </div>
+
                             <Image
                                 src={url}
                                 quality={100}
