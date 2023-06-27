@@ -1,10 +1,14 @@
 // import Masonry from "masonry-layout"
 import Image from "next/image"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 export default function PhotosPage() {
 
+    const masonryGrid = useRef()
+
     const [images, setImages] = useState([])
+    const [masonryState, setMasonryState] = useState(null)
+    const [masonry, setMasonry] = useState(null)
 
     const fetchImagesData = () => {
         fetch(`/images/PhotosPageImages.json`)
@@ -13,26 +17,26 @@ export default function PhotosPage() {
             .catch(setImages([null]))
     }
 
-
     useEffect(() => {
         fetchImagesData()
 
-        window.onload = () => {
-            const Masonry = require('masonry-layout')
-            const grid = document.querySelector('.masonryGrid')
-            console.log(Masonry)
-            const masonry = new Masonry(grid, {
+        const Masonry = require('masonry-layout')
+        // const grid = document.querySelector('.masonryGrid')
+
+        setTimeout(() => {
+            setMasonry(new Masonry(masonryGrid.current, {
                 gutter: 10,
                 fitWidth: true,
-            })
-        }
+            }))
+        }, 1000)
 
     }, [])
 
     return (
         <div className="mx-4 my-24">
-
-            <div className='masonryGrid mx-auto w-full'>
+            <div
+                ref={masonryGrid}
+                className='masonryGrid mx-auto w-full'>
                 {images[0] && images.map(image => (
                     <Image
                         key={image.id}
@@ -44,7 +48,6 @@ export default function PhotosPage() {
                     />
                 ))}
             </div>
-
         </div>
     )
 }
