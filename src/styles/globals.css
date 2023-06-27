@@ -61,15 +61,3 @@ body {
   border-bottom: 1px solid #d9376e;
   color: #d9376e;
 }
-
-.parallax-container {
-  perspective: 3px;
-}
-
-.parallax-layer1 {
-  transform: translateZ(-1px);
-}
-
-.parallax-layer2 {
-  transform: translateZ(1px);
-}

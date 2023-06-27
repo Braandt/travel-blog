@@ -58,7 +58,7 @@ export default function Footer() {
                 ))}
             </div>
 
-            <small className='text-white opacity-40 tracking-widest'>Copyright &copy; {year} - Desenvolvido pro <a className='border-b-2' href='https://leobrandt.vercel.app/' target='_blank'>Leonardo Brandt</a></small>
+            <small className='text-white opacity-40 tracking-widest'>Copyright &copy; {year} - Desenvolvido por <a className='border-b-2' href='https://leobrandt.vercel.app/' target='_blank'>Leonardo Brandt</a></small>
 
         </div>
     )
