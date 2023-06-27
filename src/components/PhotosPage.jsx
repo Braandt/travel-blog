@@ -23,12 +23,12 @@ export default function PhotosPage() {
 
         const Masonry = require('masonry-layout')
 
-        // setTimeout(() => {
-        const masonry = new Masonry(masonryGrid.current, {
-            gutter: 10,
-            fitWidth: true,
-        })
-        // }, 1000)
+        images.length > 1 && setTimeout(() => {
+            const masonry = new Masonry(masonryGrid.current, {
+                gutter: 10,
+                fitWidth: true,
+            })
+        }, 1000)
 
     }, [images])
 
