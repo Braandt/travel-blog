@@ -7,8 +7,6 @@ export default function PhotosPage() {
     const masonryGrid = useRef()
 
     const [images, setImages] = useState([])
-    const [masonryState, setMasonryState] = useState(null)
-    const [masonry, setMasonry] = useState(null)
 
     const fetchImagesData = () => {
         fetch(`/images/PhotosPageImages.json`)
@@ -19,18 +17,20 @@ export default function PhotosPage() {
 
     useEffect(() => {
         fetchImagesData()
+    }, [])
+
+    useEffect(() => {
 
         const Masonry = require('masonry-layout')
-        // const grid = document.querySelector('.masonryGrid')
 
-        setTimeout(() => {
-            setMasonry(new Masonry(masonryGrid.current, {
-                gutter: 10,
-                fitWidth: true,
-            }))
-        }, 1000)
+        // setTimeout(() => {
+        const masonry = new Masonry(masonryGrid.current, {
+            gutter: 10,
+            fitWidth: true,
+        })
+        // }, 1000)
 
-    }, [])
+    }, [images])
 
     return (
         <div className="mx-4 my-24">
