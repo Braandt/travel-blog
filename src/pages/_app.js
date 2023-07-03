@@ -15,6 +15,7 @@ export default function App({ Component, pageProps }) {
 				<Nav />
 				<main>
 					<Component {...pageProps} />
+					<Analytics />
 				</main>
 
 				<CTA />

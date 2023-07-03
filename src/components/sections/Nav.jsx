@@ -47,7 +47,7 @@ export default function Nav() {
                     md:ml-12"
                     >
 
-                        <NavItem href='/' name='about' />
+                        <NavItem href='/' name='sobre' />
                         <NavItem href='/help' name='ajudar' />
 
                     </div>

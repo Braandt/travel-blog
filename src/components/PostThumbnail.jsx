@@ -34,8 +34,7 @@ export default function PostThumbnail({ post }) {
                     md:group-hover:opacity-60"
                     ></div>
                     <div
-                        className="absolute p-10 transition-all text-white duration-500
-                        top-20 opacity-0
+                        className="absolute p-10 transition-all text-white duration-500 top-20 opacity-0 text-center flex flex-col items-center w-full justify-center h-full
                         md:group-hover:opacity-100 group-hover:top-0"
                     >
                         <p className="text-lg tracking-wider">{title}</p>

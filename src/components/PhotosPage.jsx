@@ -4,50 +4,42 @@ import ImagePresentation from "./postsComponents/ImagePresentation"
 
 export default function PhotosPage() {
 
-    const masonryGrid = useRef()
-
     const [imgPresentation, setImgPresentation] = useState(false)
     const [selectedImg, setSelectedImg] = useState(0)
     const [images, setImages] = useState([])
+    const [allImages, setAllImages] = useState([])
     const [scrollPosition, setScrollPosition] = useState(0)
     const [activeLocations, setActiveLocations] = useState([])
     const [imageLocation, setImagesLocation] = useState('')
-
-    const fetchImagesData = () => {
-        fetch(`/images/PhotosPageImages.json`)
-            .then(res => res.json())
-            .then(data => setImages(data))
-            .catch(setImages([null]))
-    }
 
     useEffect(() => {
         fetch('/images/PhotosPageImages.json')
             .then(res => res.json())
             .then(data => {
                 data.map(item => {
-                    console.log(item)
                     fetch(item.url)
                         .then(res => res.json())
-                        .then(newData => setImages(newData.filter(newItem => item.imagesId.includes(newItem.id))))
+                        .then(newData => {
+                            const imgs = newData.filter(newItem => item.imagesId.includes(newItem.id))
+                            setAllImages(imgs)
+                            setImages(imgs)
+                        }
+                        )
                 })
             }
             )
     }, [])
 
     useEffect(() => {
+        console.log(activeLocations.length);
+        if (activeLocations.length === 0) {
+            setImages(allImages)
+        } else {
+            setImages(allImages.filter(image => activeLocations.includes(image.location)))
+        }
+    }, [activeLocations])
 
-        const Masonry = require('masonry-layout')
-
-        images.length > 1 && setTimeout(() => {
-            const masonry = new Masonry(masonryGrid.current, {
-                gutter: 10,
-                fitWidth: true,
-            })
-        }, 1000)
-
-    }, [images, activeLocations])
-
-    const locations = images.length > 1 && [...new Set(images.map(image => image.location))]
+    const locations = images.length > 0 && [...new Set(allImages.map(image => image.location))]
 
     const locationClickHandler = (loc) => {
         activeLocations.includes(loc) ?
@@ -62,18 +54,17 @@ export default function PhotosPage() {
         setImagesLocation(image.location)
     }
     return (
-        <>
+        <div className="mx-12">
             <div className="py-4 items-center">
-
-                <p>Filtrar por localização:</p>
 
                 <div className="flex gap-2 mt-2 text-sm">
                     {locations.length > 0 && locations.map(loc => (
                         <button
                             key={loc}
-                            className={`py-1 px-4 rounded-full font-sans2 bg-white border-[1px] border-green-300 transition-all
-                            hover:bg-green-50
-                            ${activeLocations[0] && activeLocations.includes(loc) && 'bg-green-300'}
+                            className={`py-1 px-4 rounded-full font-sans2 border-[1px] border-amber-500 transition-all shadow-sm
+                            hover:shadow-md
+                            active:shadow-sm active:scale-95
+                            ${activeLocations[0] && activeLocations.includes(loc) && 'bg-amber-500 text-white'}
                             `}
                             onClick={() => locationClickHandler(loc)}
                         >
@@ -83,19 +74,18 @@ export default function PhotosPage() {
                 </div>
             </div>
 
-            <div className="relative my-12">
+            <div className="my-12">
                 <div
-                    ref={masonryGrid}
-                    className='mx-auto'
+                    className='flex flex-wrap items-center justify-evenly transition-all gap-12'
                 >
 
-                    {images.length > 10 && activeLocations[0] && images.map((image, index) => (activeLocations.includes(image.location) && (
-                        <ImageComponent image={image} index={index} imageClickHandle={imageClickHandle} />
-                    )
-                    ))}
-
-                    {images.length > 10 && !activeLocations[0] && images.map((image, index) => (
-                        <ImageComponent image={image} index={index} imageClickHandle={imageClickHandle} />
+                    {images.map((image, index) => (
+                        <ImageComponent
+                            key={image.id}
+                            image={image}
+                            index={index}
+                            imageClickHandle={imageClickHandle}
+                        />
                     ))}
 
                 </div>
@@ -105,19 +95,18 @@ export default function PhotosPage() {
                 <ImagePresentation title={imageLocation} setImgPresentation={setImgPresentation} images={images} selectedImg={selectedImg} scrollPosition={scrollPosition} />
             }
 
-        </>
+        </div>
     )
 }
 
 export function ImageComponent({ image, index, imageClickHandle }) {
     return (
         <Image
-            key={image.id}
-            width={300}
-            height={300}
+            width={500}
+            height={400}
             src={image.url}
             alt={image.caption}
-            className='max-w-fit h-fit mb-[10px] cursor-zoom-in'
+            className='w-fit h-96 flex-1 object-cover cursor-zoom-in'
             onClick={() => imageClickHandle(image, index)}
         />
     )

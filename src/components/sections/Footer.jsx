@@ -19,9 +19,8 @@ export default function Footer() {
     const links = [
         { name: 'Post', url: '/posts' },
         { name: 'Photos', url: '/photos' },
-        { name: 'Countries', url: '/countries' },
-        { name: 'Shop', url: '/shop' },
-        { name: 'Sponsors', url: '/sponsors' }
+        { name: 'Sobre', url: '/' },
+        { name: 'Ajudar', url: '/ajudar' }
     ]
 
     return (

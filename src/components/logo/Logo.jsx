@@ -2,6 +2,7 @@ export default function Logo({ className }) {
     return (
         <div
             className={`h-20 aspect-square flex items-center justify-center rounded-full bg-white -rotate-3 shadow-sm
+            active:scale-95
             ${className}`}
         >
             <div

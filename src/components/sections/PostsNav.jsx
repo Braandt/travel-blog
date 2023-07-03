@@ -18,14 +18,14 @@ export default function PostsNav({ posts, id }) {
 			<Link
 				href={`/blog/${prevPost}`}
 				className='place-self-start prev-clip bg-pallete-2 text-white w-fit px-6 py-1 transition-all
-				hover:-translate-x-2'
+				hover:-translate-x-2 hover:text-amber-500'
 			>
 				Anterior
 			</Link>
 			<Link
 				href={`/blog/${nextPost}`}
 				className='place-self-end next-clip bg-pallete-2 text-white w-fit px-6 py-1 transition-all
-				hover:translate-x-2'
+				hover:translate-x-2 hover:text-amber-500'
 			>
 				Próximo
 			</Link>

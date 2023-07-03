@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 
 export default function PhotoCarousel() {
 
-    const gap = 12
-
     const [images, setImages] = useState([])
 
     const fetchImages = () => {
@@ -36,9 +34,9 @@ export function ImagePortion({ images }) {
             style={{ animation: 'scroll-x 60s linear infinite' }}
             className='flex shrink-0 h-full gap-12'
         >
-            {images.length > 0 && images.map((img, index) => (
+            {images.length > 0 && images.map(img => (
                 <Link
-                    href='/'
+                    href='/photos'
                     key={img.id}
                 >
                     <Image

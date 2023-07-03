@@ -69,11 +69,11 @@ export default function PostPhotoCarousel({ images, setImgPresentation, setSelec
                             width={1200}
                             height={1200}
                             alt={img.caption}
-                            className='h-full w-fit max-w-screen object-contain cursor-zoom-in rounded-xl'
+                            className='h-full w-fit max-w-screen object-contain cursor-zoom-in'
                         />
 
                         <div
-                            className={`absolute w-full h-full top-0 left-0 bg-black rounded-xl transition-all mix-blend-hue duration-500
+                            className={`absolute w-full h-full top-0 left-0 bg-black transition-all mix-blend-hue duration-500
                             hidden
                             md:block
                             ${index == current ? 'bg-opacity-0' : 'bg-opacity-100'}`}

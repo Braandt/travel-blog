@@ -39,7 +39,7 @@ export default function LastPosts({ posts }) {
                             <Image
                                 src={thumbnailUrl}
                                 className='object-cover my-2 w-full aspect-square origin-center transition-all duration-200 rounded-lg
-                                group-hover:scale-[102%]'
+                                group-hover:scale-[102%] group-hover:rounded-none'
                                 alt=''
                                 width={500}
                                 height={500}
