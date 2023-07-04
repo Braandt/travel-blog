@@ -6,7 +6,7 @@ export default function Footer() {
 
     const year = new Date().getFullYear()
 
-    const iconStyle = 'w-8 h-8 text-pallete-4 hover:text-pallete-3'
+    const iconStyle = 'w-8 h-8 text-pallete-4 hover:text-amber-400'
 
     const socials = [
         { name: 'youtube', url: 'https://www.youtube.com', icon: <FaYoutube className={iconStyle} /> },
@@ -48,7 +48,7 @@ export default function Footer() {
             <div className='flex max-w-xl w-full my-12 justify-between tracking-widest'>
                 {links.map(link => (
                     <Link
-                        className='text-white hover:text-pallete-3'
+                        className='text-white hover:text-amber-400'
                         key={link.name}
                         href={link.url}
                     >

@@ -1,3 +1,5 @@
+import CircleType from "circletype"
+
 export const sortByDate = (a, b) => {
     return new Date(b.frontMatter.date) - new Date(a.frontMatter.date)
 }
@@ -39,3 +41,9 @@ export const copyToClipboard = async (text, alertText) => {
 }
 
 export var mainTitle = 'PedalaLeo 🚲'
+
+export const arcText = (element, angle, dir = 1) => {
+    new CircleType(element)
+        .dir(dir)
+        .radius(angle);
+}
