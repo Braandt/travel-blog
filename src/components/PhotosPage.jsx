@@ -106,8 +106,8 @@ export function ImageComponent({ image, index, imageClickHandle }) {
             height={400}
             src={image.url}
             alt={image.caption}
-            className='w-fit h-96 flex-1 object-cover cursor-zoom-in rounded-lg transition-all
-            hover:scale-105'
+            className='w-fit h-96 flex-1 object-cover cursor-zoom-in rounded-md transition-all
+            hover:scale-[102%]'
             onClick={() => imageClickHandle(image, index)}
         />
     )

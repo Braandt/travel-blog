@@ -19,7 +19,7 @@ export default function PostThumbnail({ post }) {
                             width={1000}
                             height={1000}
                             alt=''
-                            className='w-full object-contain rounded-xl transition-all duration-500 
+                            className='w-full object-contain rounded-xl transition-all
                             md:group-hover:scale-90 md:group-hover:shadow-xl'
                         />
                     </div>

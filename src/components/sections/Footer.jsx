@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import { FaEnvelope, FaInstagram, FaPatreon, FaTwitter, FaYoutube } from 'react-icons/fa'
-import AnimatedLogo from '../logo/AnimatedLogo'
 
 export default function Footer() {
 
@@ -26,9 +25,19 @@ export default function Footer() {
     return (
         <div className="h-screen flex flex-col items-center justify-between py-12 px-24 bg-pallete-2 text-white">
 
-            <AnimatedLogo className='flex-1' />
+            <Link
+                href='/'
+                className='aspect-square rounded-full bg-gradient-to-t font-serif overflow-clip transition-all bg-opacity-80 flex-1 max-h-96
+                hover:scale-[105%]'
+            >
+                <div
+                    className="h-full bg-contain bg-center bg-no-repeat"
+                    style={{ backgroundImage: 'url(/images/logo/logo3.svg)' }}
+                ></div>
+            </Link>
 
-            <p className="font-sans2 my-12 text-center leading-loose max-w-3xl">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nesciunt autem, vel sint reprehenderit distinctio perferendis, corporis asperiores quod tenetur velit quia at est repellat ut explicabo aperiam expedita sapiente debitis.</p>
+            <p className="font-sans2 text-white/60 my-12 text-center leading-loose max-w-3xl">“I learned this, at least, by my experiment: that if one advances confidently in the direction of his dreams, and endeavors to live the life which he has imagined, he will meet with a success unexpected in common hours.”
+                ― Henry David Thoreau</p>
 
             <div className="flex gap-12">
                 {socials.map(item => {

@@ -17,7 +17,7 @@ export default function posts({ posts }) {
             <Head>
                 <title>{pageTitle}</title>
             </Head>
-            <PagesHero header='Todas as histórias até agora' subheader='disoa idjosa jdiosajido jsaiodj isoajdi sjao dja' />
+            <PagesHero header='Todas as histórias até agora' subheader='' />
 
             <div
                 className='grid border-r-[1px] border-pallete-2/10 my-32

@@ -18,7 +18,7 @@ export default function Nav() {
             <div className="bg-pallete-2 h-12"></div>
             <nav
                 className='fixed top-0 w-full left-0 flex items-center justify-center h-12 bg-pallete-2 tracking-widest z-50 transition-all duration-300 text-amber-50'
-                style={{ transform: navVisible ? 'translateY(0)' : 'translateY(-100px)' }}
+                style={{ transform: navVisible ? 'translateY(0)' : 'translateY(-150px)' }}
             >
 
                 <div className="flex items-center w-full
@@ -47,7 +47,7 @@ export default function Nav() {
                     md:ml-12"
                     >
 
-                        <NavItem href='/' name='sobre' />
+                        <NavItem href='/about' name='sobre' />
                         <NavItem href='/help' name='ajudar' />
 
                     </div>
