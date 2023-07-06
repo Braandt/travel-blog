@@ -57,7 +57,7 @@ export default function Hero({ posts }) {
     return (
         <div
             className="relative flex overflow-clip text-white bg-pallete-2 border-pallete-2
-            h-[75vh] border-[12px]
+            border-[12px] h-[calc(100vh_-_100px)]
             md:h-screen md:border-none"
         >
 
@@ -67,29 +67,30 @@ export default function Hero({ posts }) {
 
                 return (
                     <animated.div
-                        className='absolute w-full h-full'
+                        className='absolute w-full
+                        h-full'
                         style={style}
                     >
                         <div
-                            className='flex flex-col h-full items-center justify-center text-center
-                            md:flex-row'
+                            className='h-full items-center justify-center text-center
+                            md:flex'
                         >
                             <div
                                 className='bg-cover bg-center
-                                w-full h-3/5 rounded-xl
+                                w-full h-[40vh] rounded-xl
                                 md:absolute md:inset-0 md:h-full md:rounded-none'
                                 style={{ backgroundImage: `url(${thumbnailUrl})` }}
                             ></div>
 
-                            <div className="bg-black w-full h-full mix-blend-overlay opacity-50
+                            <div className="bg-black inset-0 mix-blend-overlay opacity-50
                             hidden
                             md:block md:absolute"
                             ></div>
 
                             <Link
                                 href={`/blog/${posts[item].slug}`}
-                                className="flex flex-col items-center justify-center group text-amber-400 max-w-screen-lg flex-1
-                                md:absolute md:w-4/6"
+                                className="flex flex-col items-center justify-center group text-amber-400 max-w-screen-lg flex-1 h-1/2
+                                md:absolute md:w-4/6 md:h-fit"
                                 onMouseEnter={() => setPlayCorousel(false)}
                                 onMouseLeave={() => setPlayCorousel(true)}
                             >
@@ -155,9 +156,8 @@ export default function Hero({ posts }) {
             </button>
 
             <div
-                className='absolute bottom-0 flex items-center justify-center gap-4 w-full translate-y-full
-                h-24 text-pallete-2
-                md:mb-12 md:translate-y-0 md:h-12 md:text-white'
+                className='hidden absolute bottom-0 items-center justify-center gap-4 w-full
+                md:flex md:mb-12 md:h-12 md:text-white'
             >
                 {playCorousel ?
                     <BsPause onClick={() => setPlayCorousel(false)} /> :

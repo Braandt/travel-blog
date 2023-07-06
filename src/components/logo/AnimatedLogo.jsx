@@ -5,7 +5,6 @@ export default function AnimatedLogo({ className }) {
         <Link
             href='/'
             className={`aspect-square rounded-full bg-gradient-to-t font-serif overflow-clip transition-all bg-gray-50 bg-opacity-80 max-h-96
-            hover:scale-[105%] hover:bg-opacity-90
             ${className}`}
         >
             <div

@@ -9,13 +9,21 @@ export default function CTA() {
                 text='inscreva-se'
             />
 
-            <div className='w-full mx-auto flex flex-wrap items-center justify-center gap-12 p-12'>
+            <div className='w-full mx-auto flex flex-wrap items-center justify-center gap-12 p-4
+            md:p-12'
+            >
 
                 <div>
-                    <p className=" tracking-widest text-3xl text-center max-w-lg">Assine as newsletters para receber as próximas histórias e fotos no seu email</p>
+                    <p className=" tracking-widest text-3xl text-center max-w-lg">
+                        Assine as newsletters para receber as próximas histórias e fotos no seu email
+                    </p>
                 </div>
 
-                <div className="rounded-3xl px-6 py-2 bg-[#fff] overflow-clip">
+                <div
+                    className="rounded-3xl py-2 bg-[#fff] overflow-clip
+                    px-2
+                    md:px-6"
+                >
 
                     <iframe src="https://leoobrandt.substack.com/embed"></iframe>
 

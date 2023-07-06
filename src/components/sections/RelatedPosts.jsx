@@ -11,10 +11,13 @@ export default function RelatedPosts({ posts, frontMatter }) {
     })
 
     return (
-        <div className="my-12">
+        <div className="my-12 w-full">
             <p className='mb-2'>Conteúdo relacionado</p>
 
-            <div className='grid grid-cols-4 gap-4'>
+            <div
+                className='grid grid-cols-2 gap-4
+            md:grid-cols-4'
+            >
                 {relatedPosts.map(post => (
 
                     <RelatedPost

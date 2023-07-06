@@ -19,7 +19,6 @@ export default function PhotoCarousel() {
         h-[50vh]
         md:h-[70vh]"
         >
-
             <ImagePortion images={images} />
             <ImagePortion images={images} />
 
@@ -36,8 +35,8 @@ export function ImagePortion({ images }) {
         >
             {images.length > 0 && images.map(img => (
                 <Link
-                    href='/photos'
                     key={img.id}
+                    href='/photos'
                 >
                     <Image
                         src={img.url}

@@ -6,16 +6,24 @@ import { FaPatreon, FaPaypal } from "react-icons/fa";
 export default function Donate() {
     return (
         <>
-            <TitleFlag text='ajude' className='mx-auto translate-y-1/2 text-xl' />
-            <div className="grid grid-cols-3 items-center bg-pallete-5/70 px-24 py-24 mx-12 rounded-xl transition-all">
+            <TitleFlag text='ajude' className='mx-auto translate-y-1/2 text-lg md:text-xl' />
 
-                <div className="col-span-2 text-center flex justify-center w-full">
+            <div className="grid-cols-3 items-center bg-pallete-5/70 rounded-xl transition-all
+            py-12 px-4
+            md:p-24 md:mx-12 md:grid"
+            >
+
+                <div className="col-span-2 text-center flex justify-center w-full mb-6">
                     <p className="max-w-lg text-3xl tracking-wider text-white">
                         Faça uma doação única ou periódica de qualquer valor ou assine meu patreon para receber conteúdo exclusivo
                     </p>
                 </div>
 
-                <div className="flex flex-col gap-12">
+                <div
+                    className="flex flex-col 
+                    gap-6 
+                    md:gap-12"
+                >
                     <DonateButton
                         link='https://www.paypal.com/donate/?hosted_button_id=WUZLUTU67UG4N'
                         text='Doar com PayPal'

@@ -9,7 +9,6 @@ export default function PostsNav({ posts, id }) {
 		setCurrentPost(posts.findIndex(post => post.frontMatter.id === id))
 	}, [id])
 
-
 	const prevPost = posts[currentPost - 1] && posts[currentPost - 1].slug
 	const nextPost = posts[currentPost + 1] && posts[currentPost + 1].slug
 
@@ -17,6 +16,7 @@ export default function PostsNav({ posts, id }) {
 		<div className='grid grid-cols-2 w-full py-12'>
 			<Link
 				href={`/blog/${prevPost}`}
+				style={{ visibility: !prevPost && 'hidden' }}
 				className='place-self-start prev-clip bg-pallete-2 text-white w-fit px-6 py-1 transition-all
 				hover:-translate-x-2 hover:text-amber-500'
 			>
@@ -24,6 +24,7 @@ export default function PostsNav({ posts, id }) {
 			</Link>
 			<Link
 				href={`/blog/${nextPost}`}
+				style={{ visibility: !nextPost && 'hidden' }}
 				className='place-self-end next-clip bg-pallete-2 text-white w-fit px-6 py-1 transition-all
 				hover:translate-x-2 hover:text-amber-500'
 			>

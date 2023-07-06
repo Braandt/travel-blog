@@ -10,18 +10,20 @@ export default function help() {
     const pageTitle = mainTitle + ' Ajudar'
 
     return (
-        <>
+        <div
+            className="mx-4
+            md:m-12"
+        >
             <Head>
                 <title>{pageTitle}</title>
             </Head>
 
             <PagesHero header='Ajude a manter a roda girando' subheader='Se gostou do meu conteúdo, ajude a manter essa experiência acontecendo para que eu possa trazer mais inforamação e insipiração para quem gosta de aventura' />
 
-
             <Donate />
 
             <Charity />
 
-        </>
+        </div>
     )
 }

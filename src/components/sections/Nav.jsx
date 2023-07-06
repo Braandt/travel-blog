@@ -15,13 +15,18 @@ export default function Nav() {
 
     return (
         <>
-            <div className="bg-pallete-2 h-12"></div>
+            <div
+                className="bg-pallete-2 h-16
+                md:h-12"
+            ></div>
             <nav
-                className='fixed top-0 w-full left-0 flex items-center justify-center h-12 bg-pallete-2 tracking-widest z-50 transition-all duration-300 text-amber-50'
+                className='fixed top-0 w-full left-0 flex items-center justify-center h-16
+                bg-pallete-2 tracking-widest z-50 transition-all duration-300 text-amber-50
+                md:h-12'
                 style={{ transform: navVisible ? 'translateY(0)' : 'translateY(-150px)' }}
             >
 
-                <div className="flex items-center w-full
+                <div className="flex items-center w-full px-2
                 max-w-sm
                 md:max-w-lg"
                 >
@@ -32,13 +37,16 @@ export default function Nav() {
                     >
 
                         <NavItem href='/posts' name='posts' />
-                        <NavItem href='/photos' name='photos' />
+                        <NavItem href='/photos' name='fotos' />
 
                     </div>
 
                     {/* Logo */}
                     <Link href='/'>
-                        <Logo className='mt-12' />
+                        <Logo
+                            className='h-12
+                            md:h-20 md:mt-12'
+                        />
                     </Link>
 
                     {/* Right */}

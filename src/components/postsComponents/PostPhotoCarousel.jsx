@@ -1,5 +1,6 @@
 import Image from "next/image"
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
+import { CgScrollH } from 'react-icons/cg'
 import PassButton from "../UI/PassButton"
 import AnimatedLogo from "../logo/AnimatedLogo"
 
@@ -7,32 +8,26 @@ export default function PostPhotoCarousel({ images, setImgPresentation, setSelec
 
     const GAP = 16
 
-    const ref = useRef()
-    const [current, setCurrent] = useState(0)
-    const [offset, setOffset] = useState(0)
-    const [widthArr, setWidthArr] = useState([0])
+    const ref = useRef(null)
+    const [carouselScrollPosition, setCarouselScrollPosition] = useState(0)
 
     const nextImage = () => {
-        if (current != images.length - 1) {
-            setOffset(prevState => prevState + ref.current.clientWidth + GAP)
-            setWidthArr(prevState => [ref.current.clientWidth + GAP, ...prevState])
-            setCurrent(prevState => prevState + 1)
+        if (ref.current.scrollLeft + 2000 > ref.current.scrollWidth) {
+            ref.current.scrollLeft = 0
         } else {
-            setOffset(0)
-            setCurrent(0)
-            setWidthArr([])
+            ref.current.scrollLeft += ref.current.clientWidth
         }
     }
 
-    const prevImage = () => {
-        setCurrent(prevState => prevState - 1)
-        setOffset(prevState => (prevState - widthArr[0]))
-
-        if (current != 1) {
-            setWidthArr(prevState => prevState.slice(1, prevState.length))
-        } else {
-            setWidthArr([])
+    useEffect(() => {
+        ref.current.onwheel = (evt) => {
+            evt.preventDefault()
+            ref.current.scrollLeft += evt.deltaY * 5
         }
+    })
+
+    const prevImage = () => {
+        ref.current.scrollLeft -= 1000
     }
 
     const handleClick = (index) => {
@@ -42,22 +37,27 @@ export default function PostPhotoCarousel({ images, setImgPresentation, setSelec
     }
 
     return (
-        <div className="relative self-center flex justify-end h-[80vh] w-screen my-4 py-12 pl-4">
+        <div className="relative self-center justify-end h-[80vh] w-screen my-4 py-12">
 
             <div
-                style={{ gap: `${GAP}px`, transform: `translateX(-${offset}px)` }}
-                className='flex h-full gap-4 transition-all duration-500
-                w-full
-                md:w-[80%]'
+                ref={ref}
+                className='flex h-full gap-4 transition-all duration-500 overflow-scroll w-full snap-x scroll-smooth'
             >
+
+                <div
+                    className="px-12 animate-pulse self-center
+                md:hidden"
+                >
+                    <CgScrollH className="h-12 w-12 text-pallete-5" />
+                </div>
                 {images[0] && images.map((img, index) => (
 
                     <div
-                        ref={index == current ? ref : null}
                         key={img.id}
-                        className='relative shrink-0 
+                        className={`relative shrink-0 snap-center
                         max-w-[calc(100vw_-_2rem)]
-                        md:max-w-[80%]'
+                        md:max-w-[80%]
+                        ${index === 0 && 'md:ml-24'}`}
                         onClick={() => handleClick(index)}
                     >
                         <div className="absolute inset-0 flex items-center justify-center -z-10">
@@ -66,27 +66,20 @@ export default function PostPhotoCarousel({ images, setImgPresentation, setSelec
 
                         <Image
                             src={img.url}
-                            width={1200}
-                            height={1200}
+                            width={600}
+                            height={600}
                             alt={img.caption}
                             className='h-full w-fit max-w-screen object-contain cursor-zoom-in'
                         />
-
-                        <div
-                            className={`absolute w-full h-full top-0 left-0 bg-black transition-all mix-blend-hue duration-500
-                            hidden
-                            md:block
-                            ${index == current ? 'bg-opacity-0' : 'bg-opacity-100'}`}
-                        ></div>
 
                     </div>
                 ))}
             </div>
 
-            <PassButton onClick={nextImage} />
-            {current != 0 &&
-                <PassButton back onClick={prevImage} />
-            }
+            <PassButton className='hidden md:flex' onClick={nextImage} />
+
+            <PassButton className='hidden md:flex' back onClick={prevImage} />
+
         </div>
     )
 }

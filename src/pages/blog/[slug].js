@@ -16,9 +16,10 @@ import Head from 'next/head'
 import { mainTitle } from '../../../utils'
 
 const components = {
-    h1: (props) => <p className='max-w-4xl w-full self-center font-sans tracking-wide text-3xl' {...props}></p>,
-    h2: (props) => <p className='max-w-4xl w-full self-center font-sans tracking-wide text-2xl' {...props}></p>,
+    h1: (props) => <p className='max-w-4xl w-full self-center font-sans tracking-wide mt-6 text-3xl' {...props}></p>,
+    h2: (props) => <p className='max-w-4xl w-full self-center font-sans tracking-wide mt-3 text-2xl' {...props}></p>,
     p: (props) => <p className='max-w-4xl w-full self-center text-justify' {...props}></p>,
+    Indent: (props) => <div className='py-2 pl-4 max-w-4xl mx-auto' {...props}></div>,
     TitleFlag,
     MultImages,
     PostPhotoCarousel
@@ -62,7 +63,7 @@ const PostPage = ({ frontMatter, slug, mdxSource, posts }) => {
 
             <div
                 className='mb-24 overflow-hidden
-                px-4
+                px-6
                 md:px-12'
             >
 

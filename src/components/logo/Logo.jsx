@@ -13,15 +13,15 @@ export default function Logo({ className }) {
 
     return (
         <div
-            className={`relative h-20 aspect-square flex items-center justify-center rounded-full shadow-sm transition-all group
+            className={`relative shadow-sm transition-all group
             hover:scale-105
             active:scale-95 
             ${className}`}
         >
             <div
-                className={`absolute h-full flex items-end justify-center transition-all opacity-0
+                className={`absolute inset-0 flex items-end justify-center transition-all opacity-0 -z-10
                 group-hover:rotate-0 group-hover:scale-100
-                ${ready && 'rotate-90 scale-50 !opacity-100'}`}
+                ${ready && 'rotate-90 scale-50 md:!opacity-100'}`}
             >
                 <p
                     ref={arcRef}
@@ -33,7 +33,7 @@ export default function Logo({ className }) {
             </div>
 
             <div
-                className="absolute h-full rounded-full bg-center aspect-square bg-contain transition-all
+                className="h-full rounded-full bg-center aspect-square bg-contain transition-all
                 group-hover:-rotate-12 group-hover:shadow-lg"
                 style={{ backgroundImage: 'url(/images/logo/logo3simple.svg)', backgroundRepeat: 'no-repeat' }}
             >

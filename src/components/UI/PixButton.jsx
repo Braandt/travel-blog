@@ -7,6 +7,7 @@ export default function PixButton() {
     const [pixVisible, setPixVisible] = useState(false)
     const [copied, setCopied] = useState(false)
 
+
     const handleClick = () => {
         if (pixVisible) {
             copyToClipboard('e2330c80-feb1-4f00-a491-7257c2573007', '\n🎯 Chave copiada com sucesso! 🎉\n\n**\ne2330c80-feb1-4f00-a491-7257c2573007\n**\n\n Cole no app do seu banco para fazer um pix 😉\nObrigado!')
@@ -18,7 +19,8 @@ export default function PixButton() {
 
     return (
         <button
-            className={`relative flex justify-center text-white font-sans2 uppercase font-semibold text-lg py-4 px-12 shadow-md transition-all rounded-3xl
+            className={`relative flex justify-center text-white font-sans2 uppercase font-semibold text-lg py-4 shadow-md transition-all rounded-3xl
+            md:px-12 
             hover:scale-105 hover:shadow-xl
             active:scale-100 active:bg-black/20
             ${copied ? 'bg-black/20' : 'bg-pallete-3'}`}

@@ -6,7 +6,7 @@ export default function MultImages({
     selectedImages,
     setSelectedImg,
     template = selectedImages.map(() => 1),
-    captionDisabled,
+    captionEnabled,
     setScrollPosition
 }) {
 
@@ -29,17 +29,17 @@ export default function MultImages({
                     <div
                         key={id}
                         style={{ gridColumn: `auto/span ${12 / template[index]}` }}
-                        className="h-full"
+                        className="h-fit"
                     >
                         <Image
                             src={url}
                             width={2000}
                             height={2000}
-                            className="object-contain max-h-screen object-center cursor-zoom-in"
+                            className="w-fit mx-auto object-contain max-h-screen object-center cursor-zoom-in"
                             alt={caption}
                             onClick={() => handleClick(image)}
                         />
-                        {!captionDisabled &&
+                        {captionEnabled &&
                             <div>
                                 <small className="font-sans2 font-semibold">{caption}</small>
                             </div>

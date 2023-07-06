@@ -1,6 +1,7 @@
 import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
 import ImagePresentation from "./postsComponents/ImagePresentation"
+import PagesHero from "./sections/PagesHero"
 
 export default function PhotosPage() {
 
@@ -54,11 +55,17 @@ export default function PhotosPage() {
         setImagesLocation(image.location)
     }
     return (
-        <div className="mx-12">
-            <div className="py-4 items-center">
+        <div
+            className="mx-4
+            md:mx-12"
+        >
 
-                <div className="flex gap-2 mt-2 text-sm">
-                    {locations.length > 0 && locations.map(loc => (
+            <PagesHero header='Imagens' />
+
+            <div className="flex flex-wrap items-center gap-2 mt-2 text-sm">
+                <h1 className="text-xl">Filtrar imagens: </h1>
+                {locations.length > 0 && locations.map(loc => (
+                    <>
                         <button
                             key={loc}
                             className={`py-1 px-4 rounded-full font-sans2 border-[1px] border-amber-500 transition-all shadow-sm
@@ -70,13 +77,14 @@ export default function PhotosPage() {
                         >
                             {loc}
                         </button>
-                    ))}
-                </div>
+                    </>
+                ))}
             </div>
 
             <div className="my-12">
                 <div
-                    className='flex flex-wrap items-center justify-evenly transition-all gap-12'
+                    className='flex flex-wrap dense items-center justify-evenly transition-all gap-2
+                    md:gap-4'
                 >
 
                     {images.map((image, index) => (
@@ -103,11 +111,12 @@ export function ImageComponent({ image, index, imageClickHandle }) {
     return (
         <Image
             width={500}
-            height={400}
+            height={500}
             src={image.url}
             alt={image.caption}
-            className='w-fit h-96 flex-1 object-cover cursor-zoom-in rounded-md transition-all
-            hover:scale-[102%]'
+            className='w-fit flex-1 object-cover cursor-zoom-in rounded-md transition-all
+            hover:scale-[102%]
+            md:h-80 md:max-h-max'
             onClick={() => imageClickHandle(image, index)}
         />
     )

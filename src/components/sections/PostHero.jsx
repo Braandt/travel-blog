@@ -4,11 +4,11 @@ export default function PostHero({ date, location, title, thumbnailUrl }) {
 
     return (
         <div
-            className="pb-4 h-96
-            md:h-[calc(100vh_-_3rem)] md:p-8 ">
+            className="pb-4
+            md:h-[calc(100vh_-_3rem)] md:p-8">
             <div className="h-full flex flex-col">
                 <div
-                    className="relative flex-1 bg-cover bg-center"
+                    className="flex-1 bg-cover bg-center aspect-video"
                     style={{ backgroundImage: `url(${thumbnailUrl})` }}
                 >
                 </div>
