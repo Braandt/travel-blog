@@ -1,9 +1,9 @@
 import { animated, useTransition } from "@react-spring/web"
 import Image from "next/image"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import PassButton from "../UI/PassButton"
 import ExitButton from "../UI/ExitButton"
-import { nextImage, prevImage } from "../../../utils"
+import { exitButtonFunction, nextImage, prevImage } from "../../../utils"
 import AnimatedLogo from "../logo/AnimatedLogo"
 
 export default function ImagePresentation({ title, images, setImgPresentation, selectedImg, scrollPosition }) {
@@ -17,6 +17,18 @@ export default function ImagePresentation({ title, images, setImgPresentation, s
         enter: { transform: 'translateX(0%)' },
         leave: { transform: reverse ? 'translateX(100%)' : 'translateX(-100%)' },
     })
+
+    useEffect(() => {
+        window.onkeydown = (key) => {
+            if (key.key === 'ArrowRight') {
+                nextImage(setImage, images, setReverse)
+            } else if (key.key === 'ArrowLeft') {
+                prevImage(setImage, images, setReverse)
+            } else if (key.key === 'Escape') {
+                exitButtonFunction(setImgPresentation, scrollPosition)
+            }
+        }
+    }, [])
 
     return (
         <div className='fixed z-50 inset-0 bg-black'>
@@ -53,10 +65,19 @@ export default function ImagePresentation({ title, images, setImgPresentation, s
 
                 })}
 
+                <div
+                    className="absolute h-full w-1/2"
+                    onClick={() => prevImage(setImage, images, setReverse)}
+                ></div>
+                <div
+                    className="absolute h-full w-1/2 right-0"
+                    onClick={() => nextImage(setImage, images, setReverse)}
+                ></div>
+
                 <PassButton onClick={() => nextImage(setImage, images, setReverse)} />
                 <PassButton back onClick={() => prevImage(setImage, images, setReverse)} />
 
-                <ExitButton setImgPresentation={setImgPresentation} scrollPosition={scrollPosition} />
+                <ExitButton stateToSetToFalse={setImgPresentation} scrollPosition={scrollPosition} />
 
             </div>
         </div >

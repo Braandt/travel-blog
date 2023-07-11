@@ -13,7 +13,7 @@ export default function Logo({ className }) {
 
     return (
         <div
-            className={`relative shadow-sm transition-all group
+            className={`relative transition-all group
             hover:scale-105
             active:scale-95 
             ${className}`}
@@ -33,8 +33,8 @@ export default function Logo({ className }) {
             </div>
 
             <div
-                className="h-full rounded-full bg-center aspect-square bg-contain transition-all
-                group-hover:-rotate-12 group-hover:shadow-lg"
+                className="h-full rounded-full bg-center aspect-square bg-contain transition-all shadow-xl
+                group-hover:-rotate-12"
                 style={{ backgroundImage: 'url(/images/logo/logo3simple.svg)', backgroundRepeat: 'no-repeat' }}
             >
             </div>

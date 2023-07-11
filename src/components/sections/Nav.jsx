@@ -21,7 +21,7 @@ export default function Nav() {
             ></div>
             <nav
                 className='fixed top-0 w-full left-0 flex items-center justify-center h-16
-                bg-pallete-2 tracking-widest z-50 transition-all duration-300 text-amber-50
+                bg-pallete-2 tracking-widest z-40 transition-all duration-300 text-amber-50
                 md:h-12'
                 style={{ transform: navVisible ? 'translateY(0)' : 'translateY(-150px)' }}
             >
@@ -45,7 +45,7 @@ export default function Nav() {
                     <Link href='/'>
                         <Logo
                             className='h-12
-                            md:h-20 md:mt-12'
+                            md:h-16 md:mt-7'
                         />
                     </Link>
 

@@ -18,7 +18,7 @@ export default function MultImages({
 
     return (
         <div
-            className='grid gap-4 items-center my-12'
+            className='grid grid-cols-12 gap-4 items-center my-12'
         >
 
             {images[0] && selectedImages.map((image, index) => {
@@ -28,14 +28,14 @@ export default function MultImages({
                 return (
                     <div
                         key={id}
-                        style={{ gridColumn: `auto/span ${12 / template[index]}` }}
+                        style={{ gridColumn: `auto / span ${12 / template[index]}` }}
                         className="h-fit"
                     >
                         <Image
                             src={url}
-                            width={2000}
-                            height={2000}
-                            className="w-fit mx-auto object-contain max-h-screen object-center cursor-zoom-in"
+                            width={1000}
+                            height={1000}
+                            className="mx-auto object-contain max-h-screen object-center cursor-zoom-in"
                             alt={caption}
                             onClick={() => handleClick(image)}
                         />

@@ -47,3 +47,8 @@ export const arcText = (element, angle, dir = 1) => {
         .dir(dir)
         .radius(angle);
 }
+
+export const exitButtonFunction = (stateToSetToFalse, scrollPosition) => {
+    document.documentElement.scrollTop = scrollPosition * document.documentElement.offsetHeight
+    stateToSetToFalse(false)
+}

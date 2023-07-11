@@ -7,7 +7,9 @@ export default function PassButton({ back, onClick, className }) {
 
     return (
         <Button
-            className={`mx-10 absolute top-1/2 -translate-y-1/2 ${style} ${className}`}
+            className={`mx-2 absolute top-1/2 -translate-y-1/2 
+            md:mx-10
+            ${style} ${className}`}
             onClick={() => onClick()}
         >
             {back ?

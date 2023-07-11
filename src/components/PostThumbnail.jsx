@@ -8,28 +8,28 @@ export default function PostThumbnail({ post }) {
     return (
         <Link
             href={`/blog/${post.slug}`}
-            className="border-l-[1px] p-6 pb-12 group transition-all 
+            className="group transition-all 
             md:active:scale-95"
         >
             <div>
                 <div className="relative">
-                    <div className="overflow-clip rounded-xl bg-pallete-2">
+                    <div className="overflow-clip bg-pallete-2">
                         < Image
                             src={thumbnailUrl}
                             width={1000}
                             height={1000}
                             alt=''
-                            className='w-full object-contain rounded-xl transition-all
-                            md:group-hover:scale-90 md:group-hover:shadow-xl'
+                            className='w-full object-contain  transition-all
+                            md:group-hover:scale-95 md:group-hover:shadow-xl'
                         />
                     </div>
 
-                    <div className="absolute inset-0 bg-black rounded-xl transition-all mix-blend-hue
+                    <div className="absolute inset-0 bg-black  transition-all mix-blend-hue
                     opacity-0
                     md:group-hover:opacity-80"
                     ></div>
 
-                    <div className="absolute inset-0 bg-black rounded-xl transition-all
+                    <div className="absolute inset-0 bg-black  transition-all
                     opacity-0
                     md:group-hover:opacity-60"
                     ></div>

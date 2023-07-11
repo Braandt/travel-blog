@@ -42,7 +42,7 @@ export function ImagePortion({ images }) {
                         src={img.url}
                         width={1200}
                         height={1200}
-                        className="h-full object-contain w-fit shadow-lg"
+                        className="h-full object-contain w-fit shadow-xl"
                         alt={img.alt}
                     />
                 </Link>

@@ -32,6 +32,7 @@ export default function PixButton() {
                         src='/images/pix.png'
                         width={40}
                         height={40}
+                        alt='icone de pix'
                     />
                     Fazer um PIX
                 </div>

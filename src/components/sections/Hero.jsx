@@ -140,8 +140,9 @@ export default function Hero({ posts }) {
                 onClick={handleNext}
             >
                 <BsChevronCompactRight
-                    className='w-12 h-12 opacity-50 transition-all
-                group-hover:opacity-100 group-hover:scale-110'
+                    className='w-12 h-12 opacity-50 transition-all translate-y-5
+                    md:translate-y-0
+                    group-hover:opacity-100 group-hover:scale-110'
                 />
             </button>
 
@@ -150,7 +151,8 @@ export default function Hero({ posts }) {
                 onClick={handlePrev}
             >
                 <BsChevronCompactLeft
-                    className='w-12 h-12 opacity-50 transition-all
+                    className='w-12 h-12 opacity-50 transition-all translate-y-5
+                    md:translate-y-0
                     group-hover:opacity-100 group-hover:scale-110'
                 />
             </button>

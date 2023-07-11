@@ -23,14 +23,14 @@ export default function Footer() {
     ]
 
     return (
-        <div className="h-screen flex flex-col items-center justify-between py-12 bg-pallete-2 text-white
+        <div className="h-screen flex flex-col items-center justify-evenly py-12 bg-pallete-2 text-white
         px-6
         md:px-24"
         >
 
             <Link
                 href='/'
-                className='aspect-square rounded-full bg-gradient-to-t font-serif overflow-clip transition-all bg-opacity-80 flex-1 max-h-96
+                className='aspect-square rounded-full bg-gradient-to-t font-serif overflow-clip transition-all bg-opacity-80 flex-1 max-h-96 min-h-[200px]
                 hover:scale-[105%] hover:-rotate-12'
             >
                 <div

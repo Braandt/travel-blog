@@ -1,6 +1,6 @@
-import PhotosPage from "@/components/PhotosPage";
 import { mainTitle } from "../../utils";
 import Head from "next/head";
+import PhotosSection from "@/components/sections/PhotosSection";
 
 export default function photos() {
 
@@ -11,7 +11,7 @@ export default function photos() {
             <Head>
                 <title>{pageTitle}</title>
             </Head>
-            <PhotosPage />
+            <PhotosSection />
         </>
     )
 }

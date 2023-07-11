@@ -4,33 +4,43 @@ import { CgScrollH } from 'react-icons/cg'
 import PassButton from "../UI/PassButton"
 import AnimatedLogo from "../logo/AnimatedLogo"
 
-export default function PostPhotoCarousel({ images, setImgPresentation, setSelectedImg, setScrollPosition }) {
-
-    const GAP = 16
+export default function PostPhotoCarousel({
+    images,
+    setImgPresentation,
+    setSelectedImg,
+    setScrollPosition,
+    carouselScrollPosition,
+    setCarouselScrollPosition
+}) {
 
     const ref = useRef(null)
-    const [carouselScrollPosition, setCarouselScrollPosition] = useState(0)
+
+    useEffect(() => {
+        ref.current.scrollLeft = carouselScrollPosition
+        ref.current.onwheel = (evt) => {
+            evt.preventDefault()
+            ref.current.scrollLeft += evt.deltaY
+        }
+    }, [])
 
     const nextImage = () => {
-        if (ref.current.scrollLeft + 2000 > ref.current.scrollWidth) {
+        if (ref.current.scrollLeft + ref.current.offsetWidth === ref.current.scrollWidth) {
             ref.current.scrollLeft = 0
         } else {
             ref.current.scrollLeft += ref.current.clientWidth
         }
     }
 
-    useEffect(() => {
-        ref.current.onwheel = (evt) => {
-            evt.preventDefault()
-            ref.current.scrollLeft += evt.deltaY * 5
-        }
-    })
-
     const prevImage = () => {
-        ref.current.scrollLeft -= 1000
+        if (ref.current.scrollLeft === 0) {
+            ref.current.scrollLeft = ref.current.scrollWidth
+        } else {
+            ref.current.scrollLeft -= ref.current.clientWidth
+        }
     }
 
     const handleClick = (index) => {
+        setCarouselScrollPosition(ref.current.scrollLeft)
         setScrollPosition(document.documentElement.scrollTop / document.documentElement.offsetHeight)
         setImgPresentation(true)
         setSelectedImg(index)
@@ -41,23 +51,26 @@ export default function PostPhotoCarousel({ images, setImgPresentation, setSelec
 
             <div
                 ref={ref}
-                className='flex h-full gap-4 transition-all duration-500 overflow-scroll w-full snap-x scroll-smooth'
+                className='flex h-full gap-4 transition-all duration-500 overflow-scroll w-full snap-x snap-mandatory
+                md:snap-none'
             >
 
                 <div
                     className="px-12 animate-pulse self-center
-                md:hidden"
+                    md:hidden"
                 >
                     <CgScrollH className="h-12 w-12 text-pallete-5" />
                 </div>
+
                 {images[0] && images.map((img, index) => (
 
                     <div
                         key={img.id}
-                        className={`relative shrink-0 snap-center
+                        className={`relative shrink-0 snap-center snap-always
                         max-w-[calc(100vw_-_2rem)]
                         md:max-w-[80%]
-                        ${index === 0 && 'md:ml-24'}`}
+                        ${index === 0 && 'md:pl-24'}
+                        ${index === images.length - 1 && 'md:pr-24'}`}
                         onClick={() => handleClick(index)}
                     >
                         <div className="absolute inset-0 flex items-center justify-center -z-10">

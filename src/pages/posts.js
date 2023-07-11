@@ -20,8 +20,8 @@ export default function posts({ posts }) {
             <PagesHero header='Todas as histórias até agora' subheader='' />
 
             <div
-                className='grid border-r-[1px] border-pallete-2/10 my-32
-                md:grid-cols-3 md:mx-8'
+                className='grid border-r-[1px] border-pallete-2/10 my-32 gap-24 mx-8
+                md:grid-cols-2'
             >
 
                 {posts.map(post => (

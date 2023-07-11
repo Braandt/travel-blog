@@ -2,9 +2,10 @@ import fs from 'fs'
 import * as path from 'path'
 import matter from 'gray-matter'
 import Hero from '@/components/sections/Hero'
-import PhotoCarousel from '@/components/PhotoCarousel'
+import PhotoCarousel from '@/components/sections/PhotoCarousel'
 import LastPosts from '@/components/sections/LastPosts'
 import { sortByDate, brazilDataFormat } from '../../utils'
+import Welcome from '@/components/sections/Welcome'
 
 export default function Home({ posts }) {
 
@@ -14,6 +15,8 @@ export default function Home({ posts }) {
 		<div>
 
 			<Hero posts={posts} />
+
+			<Welcome />
 
 			<PhotoCarousel />
 
