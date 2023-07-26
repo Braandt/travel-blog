@@ -18,7 +18,7 @@ export default function MultImages({
 
     return (
         <div
-            className='grid grid-cols-12 gap-4 items-center my-12'
+            className='grid grid-cols-12 gap-4 items-center mb-12'
         >
 
             {images[0] && selectedImages.map((image, index) => {
@@ -41,7 +41,7 @@ export default function MultImages({
                         />
                         {captionEnabled &&
                             <div>
-                                <small className="font-sans2 font-semibold">{caption}</small>
+                                <small className="font-sans2 font-semibold opacity-70">{caption}</small>
                             </div>
                         }
                     </div>

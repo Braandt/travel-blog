@@ -2,16 +2,20 @@ import Image from "next/image"
 import { useEffect, useState } from "react"
 import ImagePresentation from "../postsComponents/ImagePresentation"
 import PagesHero from "./PagesHero"
+import Filter from "../Filter"
 
-export default function PhotosSection() {
+export default function PhotosPage() {
+
+    const IMAGES_COUNT = 25
 
     const [imgPresentation, setImgPresentation] = useState(false)
     const [selectedImg, setSelectedImg] = useState(0)
     const [images, setImages] = useState([])
     const [allImages, setAllImages] = useState([])
     const [scrollPosition, setScrollPosition] = useState(0)
-    const [activeLocations, setActiveLocations] = useState([])
     const [imageLocation, setImagesLocation] = useState('')
+    const [showMoreCounter, setShowMoreCounter] = useState(1)
+    const [limitedImages, setLimitedImages] = useState([])
 
     useEffect(() => {
         fetch('/images/PhotosPageImages.json')
@@ -31,60 +35,42 @@ export default function PhotosSection() {
             )
     }, [])
 
-    useEffect(() => {
-        if (activeLocations.length === 0) {
-            setImages(allImages)
-        } else {
-            setImages(allImages.filter(image => activeLocations.includes(image.location)))
-        }
-    }, [activeLocations])
-
-    const locations = images.length > 0 && [...new Set(allImages.map(image => image.location))]
-
-    const locationClickHandler = (loc) => {
-        activeLocations.includes(loc) ?
-            setActiveLocations(prevState => prevState.filter(item => item != loc)) :
-            setActiveLocations(prevState => [...prevState, loc])
-    }
-
     const imageClickHandle = (image, index) => {
         setImgPresentation(true)
         setSelectedImg(index)
         setScrollPosition(document.documentElement.scrollTop / document.documentElement.offsetHeight)
         setImagesLocation(image.location)
     }
+
+    const locations = images.length > 0 && [...new Set(allImages.map(image => image.location))]
+
+    const showMore = () => {
+        setShowMoreCounter(prevState => prevState + 1)
+        setLimitedImages(images.slice(0, IMAGES_COUNT + IMAGES_COUNT * showMoreCounter))
+    }
+
+    useEffect(() => {
+        setShowMoreCounter(1)
+        setLimitedImages(images.slice(0, IMAGES_COUNT))
+    }, [images])
+
     return (
         <div
             className="mx-4
             md:mx-12"
         >
 
-            <PagesHero header='Imagens' />
+            <PagesHero header='Fotos' />
 
-            <div className="flex flex-wrap items-center gap-2 mt-2 text-sm">
-                <h1 className="text-xl">Filtrar imagens: </h1>
-                {locations.length > 0 && locations.map(loc => (
-                    <button
-                        key={loc}
-                        className={`py-1 px-4 rounded-full font-sans2 border-[1px] border-amber-500 transition-all shadow-sm
-                            hover:shadow-md
-                            active:shadow-sm active:scale-95
-                            ${activeLocations[0] && activeLocations.includes(loc) && 'bg-amber-500 text-white'}
-                            `}
-                        onClick={() => locationClickHandler(loc)}
-                    >
-                        {loc}
-                    </button>
-                ))}
-            </div>
+            <Filter label={'Filtrar imagens:'} options={locations} setItems={setImages} allItems={allImages} tags='location' />
 
-            <div className="my-12">
+            <div className="mt-12">
                 <div
-                    className='flex flex-wrap items-center transition-all gap-2
+                    className='flex flex-wrap items-center transition-all gap-2 mb-12
                     md:gap-4 md:justify-center'
                 >
 
-                    {images.map((image, index) => (
+                    {limitedImages.map((image, index) => (
                         <ImageComponent
                             key={image.id}
                             image={image}
@@ -97,7 +83,19 @@ export default function PhotosSection() {
             </div>
 
             {imgPresentation && images.length > 0 &&
-                <ImagePresentation title={imageLocation} setImgPresentation={setImgPresentation} images={images} selectedImg={selectedImg} scrollPosition={scrollPosition} />
+                <ImagePresentation title={imageLocation} setImgPresentation={setImgPresentation} images={limitedImages} selectedImg={selectedImg} scrollPosition={scrollPosition} />
+            }
+
+            {limitedImages.length !== images.length &&
+                <div className="flex justify-center mb-24">
+                    <button
+                        className="bg-pallete-4 px-4 py-2 rounded-full text-white tracking-widest
+                    active:scale-95"
+                        onClick={showMore}
+                    >
+                        Mostrar mais
+                    </button>
+                </div>
             }
 
         </div>
@@ -113,7 +111,7 @@ export function ImageComponent({ image, index, imageClickHandle }) {
             alt={image.caption}
             className='flex-1 object-cover cursor-zoom-in rounded-md transition-all
             hover:scale-[102%]
-            md:h-80 md:max-h-max md:max-w-fit'
+            md:h-80 md:max-w-fit'
             onClick={() => imageClickHandle(image, index)}
         />
     )

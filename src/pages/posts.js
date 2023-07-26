@@ -1,14 +1,11 @@
 import fs from 'fs'
 import * as path from 'path'
 import matter from 'gray-matter'
-import { brazilDataFormat, mainTitle, sortByDate } from '../../utils'
-import PostThumbnail from '@/components/PostThumbnail'
-import PagesHero from '@/components/sections/PagesHero'
+import { mainTitle, sortByDate } from '../../utils'
 import Head from 'next/head'
+import PostsPage from '@/components/sections/PostsPage'
 
 export default function posts({ posts }) {
-
-    posts = brazilDataFormat(posts)
 
     const pageTitle = mainTitle + ' Posts'
 
@@ -17,20 +14,8 @@ export default function posts({ posts }) {
             <Head>
                 <title>{pageTitle}</title>
             </Head>
-            <PagesHero header='Todas as histórias até agora' subheader='' />
 
-            <div
-                className='grid border-r-[1px] border-pallete-2/10 my-32 gap-24 mx-8
-                md:grid-cols-2'
-            >
-
-                {posts.map(post => (
-
-                    <PostThumbnail key={post.frontMatter.id} post={post} />
-
-                ))}
-
-            </div>
+            <PostsPage posts={posts} />
         </>
     )
 }

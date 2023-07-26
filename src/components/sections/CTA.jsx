@@ -2,7 +2,7 @@ import TitleFlag from '../TitleFlag'
 
 export default function CTA() {
     return (
-        <div className="relative bg-amber-400 py-8">
+        <div className="relative bg-amber-500 py-8">
 
             <TitleFlag
                 className='absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xl z-10'
@@ -15,7 +15,7 @@ export default function CTA() {
 
                 <div>
                     <p className=" tracking-widest text-3xl text-center max-w-lg">
-                        Assine as newsletters para receber as próximas histórias e fotos no seu email
+                        Assine as newsletters para receber as próximas histórias no seu email
                     </p>
                 </div>
 
