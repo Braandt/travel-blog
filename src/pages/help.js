@@ -22,7 +22,7 @@ export default function help() {
 
             <Donate />
 
-            <Charity />
+            {/* <Charity /> */}
 
         </div>
     )

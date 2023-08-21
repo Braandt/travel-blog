@@ -15,7 +15,9 @@ export default function Donate() {
 
                 <div className="col-span-2 text-center flex justify-center w-full mb-6">
                     <p className="max-w-lg text-3xl tracking-wider text-white">
-                        Faça uma doação única ou periódica de qualquer valor ou assine meu patreon para receber conteúdo exclusivo
+                        Aceito ajuda financeira para me manter viajando e produzindo conteúdo <br />
+                        Qualquer valor é bem vindo e será usado para alimentação ou para equipamentos para a viagem
+                        Muito obrigado :)
                     </p>
                 </div>
 
@@ -31,12 +33,12 @@ export default function Donate() {
                         className='bg-[#2997d8]'
                     />
 
-                    <DonateButton
+                    {/* <DonateButton
                         link='/'
                         text='Fazer parte do patreon'
                         icon={<FaPatreon className="text-3xl" fill="#fff" />}
                         className='bg-[#f23f49]'
-                    />
+                    /> */}
 
                     <PixButton />
                 </div>
@@ -51,7 +53,7 @@ export function DonateButton({ link, icon, text, className }) {
         <Link
             href={link}
             target="_blank"
-            className={`flex whitespace-nowrap justify-center text-white font-sans2 uppercase font-semibold items-center text-lg gap-4 py-4 px-12 rounded-full shadow-md transition-all
+            className={`flex justify-center text-white font-sans2 uppercase font-semibold items-center text-lg gap-4 py-4 px-12 rounded-full shadow-md transition-all
                 hover:scale-105 hover:shadow-2xl
                 ${className}`}
         >
