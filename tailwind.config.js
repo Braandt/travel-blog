@@ -9,7 +9,7 @@ module.exports = {
   theme: {
     fontFamily: {
       'sans': 'Tanker',
-      'sans2': 'montserrat',
+      'sans2': 'Montserrat',
       'serif': 'Erode',
       'serif2': 'Bespoke Serif',
       'script': 'Dancing Script'
