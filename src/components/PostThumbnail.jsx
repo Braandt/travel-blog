@@ -29,7 +29,7 @@ export default function PostThumbnail({ post }) {
                     md:group-hover:opacity-80"
                     ></div>
 
-                    <div className="absolute inset-0 bg-black  transition-all
+                    <div className="absolute inset-0 bg-black transition-all
                     opacity-0
                     md:group-hover:opacity-60"
                     ></div>
@@ -37,12 +37,12 @@ export default function PostThumbnail({ post }) {
                         className="absolute p-10 transition-all text-white duration-500 top-20 opacity-0 text-center flex flex-col items-center w-full justify-center h-full
                         md:group-hover:opacity-100 group-hover:top-0"
                     >
-                        <p className="text-lg tracking-wider">{title}</p>
+                        {/* <p className="text-lg tracking-wider">{title}</p>
                         <div className="flex gap-4 font-sans2">
                             <p>{date}</p>
                             {location && '|'}
                             <p>{location}</p>
-                        </div>
+                        </div> */}
                         <p className="font-sans2 tracking-wider mt-4 max-w-sm">{intro}<span className="text-amber-500 hover:border-b-[1px]"> ...ler mais</span></p>
                     </div>
                 </div>
