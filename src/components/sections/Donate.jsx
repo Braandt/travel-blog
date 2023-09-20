@@ -10,13 +10,16 @@ export default function Donate() {
 
             <div className="grid-cols-3 items-center bg-pallete-5/70 rounded-xl transition-all
             py-12 px-4
-            md:p-24 md:mx-12 md:grid"
+            md:p-12 md:mx-12 mb-12
+            lg:grid"
             >
 
-                <div className="col-span-2 text-center flex justify-center w-full mb-6">
-                    <p className="max-w-lg text-3xl tracking-wider text-white">
-                        Aceito ajuda financeira para me manter viajando e produzindo conteúdo <br />
-                        Qualquer valor é bem vindo e será usado para alimentação ou para equipamentos para a viagem
+                <div
+                    className="col-span-2 text-center flex justify-center w-full mb-6
+                lg:mb-0"
+                >
+                    <p className="max-w-lg text-3xl tracking-wider text-white leading-loose">
+                        Aceito ajuda financeira de qualquer valor <br /> isso será usado para alimentação ou para equipamentos para a viagem <br />
                         Muito obrigado :)
                     </p>
                 </div>

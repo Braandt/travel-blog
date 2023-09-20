@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { FaEnvelope, FaInstagram, FaPatreon, FaTwitter, FaYoutube } from 'react-icons/fa'
+import { BsWhatsapp } from 'react-icons/bs'
 
 export default function Footer() {
 
@@ -8,10 +9,8 @@ export default function Footer() {
     const iconStyle = 'w-8 h-8 text-pallete-4 hover:text-amber-400'
 
     const socials = [
-        { name: 'youtube', url: 'https://www.youtube.com', icon: <FaYoutube className={iconStyle} /> },
         { name: 'instagram', url: 'https://www.instagram.com/pedalaleo/', icon: <FaInstagram className={iconStyle} /> },
-        { name: 'patreon', url: 'https://www.patreon.com', icon: <FaPatreon className={iconStyle} /> },
-        { name: 'twitter', url: 'https://www.twitter.com', icon: <FaTwitter className={iconStyle} /> },
+        { name: 'whatsapp', url: 'https://wa.me/5541987304848', icon: <BsWhatsapp className={iconStyle} /> },
         { name: 'email', url: 'mailto: leoobrandt@hotmail.com', icon: <FaEnvelope className={iconStyle} /> },
     ]
 
@@ -39,7 +38,7 @@ export default function Footer() {
                 ></div>
             </Link>
 
-            <p className="font-sans2 text-white/60 my-12 text-center leading-loose max-w-3xl">
+            <p className="font-sans2 text-white/60 mt-4 mb-8 text-center leading-loose max-w-3xl">
                 “I learned this, at least, by my experiment: that if one advances confidently in the direction of his dreams, and endeavors to live the life which he has imagined, he will meet with a success unexpected in common hours.” <br />
                 ― Henry David Thoreau
             </p>

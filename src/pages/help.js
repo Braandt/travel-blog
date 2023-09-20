@@ -18,7 +18,7 @@ export default function help() {
                 <title>{pageTitle}</title>
             </Head>
 
-            <PagesHero header='Ajude a manter a roda girando' subheader='Se gostou do meu conteúdo, ajude a manter essa experiência acontecendo para que eu possa trazer mais inforamação e insipiração para quem gosta de aventura' />
+            <PagesHero header='Ajude a manter a roda girando' subheader='Se gostou do meu conteúdo, ajude a manter essa experiência acontecendo para que eu possa trazer mais informação e inspiração para quem gosta de aventura' />
 
             <Donate />
 
