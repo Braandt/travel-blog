@@ -19,7 +19,7 @@ export default function App({ Component, pageProps }) {
 					<Analytics />
 				</main>
 
-				<CTA />
+				/* <CTA /> */
 				<Footer />
 			</div>
 		</div>
