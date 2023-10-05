@@ -1,6 +1,5 @@
 import Image from "next/image"
-import { useEffect, useRef, useState } from "react"
-import { CgScrollH } from 'react-icons/cg'
+import { useEffect, useRef } from "react"
 import PassButton from "../UI/PassButton"
 import AnimatedLogo from "../logo/AnimatedLogo"
 
@@ -54,13 +53,6 @@ export default function PostPhotoCarousel({
                 className='flex h-full gap-4 transition-all duration-500 overflow-scroll w-full snap-x snap-mandatory
                 md:snap-none'
             >
-
-                <div
-                    className="px-12 animate-pulse self-center
-                    md:hidden"
-                >
-                    <CgScrollH className="h-12 w-12 text-pallete-5" />
-                </div>
 
                 {images[0] && images.map((img, index) => (
 
