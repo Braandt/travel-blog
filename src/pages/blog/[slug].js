@@ -19,7 +19,11 @@ import Link from 'next/link'
 const components = {
     h1: (props) => <p className='max-w-4xl w-full self-center font-sans tracking-wide mt-6 text-3xl' {...props}></p>,
     h2: (props) => <p className='max-w-4xl w-full self-center font-sans tracking-wide mt-3 text-2xl' {...props}></p>,
-    p: (props) => <p className='max-w-4xl w-full self-center mb-4' {...props}></p>,
+    p: (props) => <p
+        className='max-w-4xl w-full self-center mb-4 text-justify 
+        md:text-left'
+        {...props}
+    ></p>,
     Link,
     Indent: (props) => <div className='py-2 pl-4 max-w-4xl mx-auto' {...props}></div>,
     TitleFlag,
@@ -67,7 +71,7 @@ const PostPage = ({ frontMatter, slug, mdxSource, posts }) => {
             <div
                 className='mb-24 overflow-hidden
                 px-3
-                md:px-12'
+                sm:px-12'
             >
 
                 <div className='mt-4 max-w-5xl mx-auto'>
