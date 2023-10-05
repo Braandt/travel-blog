@@ -82,7 +82,7 @@ export default function Hero({ posts }) {
                                 style={{ backgroundImage: `url(${thumbnailUrl})` }}
                             ></div>
 
-                            <div className="bg-black inset-0 mix-blend-overlay opacity-50
+                            <div className="bg-black inset-0 mix-blend-overlay opacity-60
                             hidden
                             md:block md:absolute"
                             ></div>
@@ -122,7 +122,7 @@ export default function Hero({ posts }) {
                                 </div>
 
                                 <TitleFlag
-                                    text='Ler Post'
+                                    text='Ler História'
                                     className='!text-black !bg-amber-50 mix-blend-screen transition-all
                                     group-hover:!bg-amber-400 group-hover:mix-blend-normal
                                     md:text-xl md:!px-12'

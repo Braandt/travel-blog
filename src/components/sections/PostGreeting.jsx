@@ -5,7 +5,7 @@ export default function PostGreeting() {
         <div
             className='text-center flex flex-col items-center py-12 border-b-2 border-dashed border-pallete-2/30'
         >
-            <h1 className='font-script text-4xl py-4'>
+            <h1 className='text-4xl py-4'>
                 Obrigado por ler!
             </h1>
 
@@ -30,13 +30,7 @@ export default function PostGreeting() {
                 >
                     Instagram
                 </Link>
-                &nbsp;e no&nbsp;
-                <Link
-                    href='https://www.youtube.com/channel/pedalaleo'
-                    className='inline-link'
-                >
-                    YouTube
-                </Link></p>
+            </p>
         </div>
     )
 }
