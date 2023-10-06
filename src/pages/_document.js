@@ -13,6 +13,8 @@ export default function Document() {
 				<link rel='icon' href='/images/logo/logo3.ico' style={{ borderRadius: '100%' }} />
 
 				<meta name="theme-color" content="#000000" />
+				<meta name="description"
+					content="Andando de bicicleta pelo sul das Américas :)" />
 			</Head>
 			<body>
 				<Main />
