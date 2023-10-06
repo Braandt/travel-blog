@@ -21,7 +21,7 @@ export default function PostsPage({ posts }) {
             <Filter label='Filtrar posts: ' options={tags} setItems={setSelectedPosts} allItems={allPosts} tags='tags' />
 
             <div
-                className='grid border-r-[1px] border-pallete-2/10 mt-12 mb-24 gap-12
+                className='grid border-pallete-2/10 mt-12 mb-24 gap-12
                 md:grid-cols-2'
             >
                 {selectedPosts.map(post => (

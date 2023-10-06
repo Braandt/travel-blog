@@ -10,7 +10,7 @@ export default function Document() {
 				<link rel="preconnect" href="https://fonts.gstatic.com" />
 				<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
 
-				<link rel='icon' href='/images/logo/logo3icon.svg' style={{ borderRadius: '100%' }} />
+				<link rel='icon' href='/images/logo/logo3.ico' style={{ borderRadius: '100%' }} />
 
 				<meta name="theme-color" content="#000000" />
 			</Head>
