@@ -35,7 +35,7 @@ export default function MultImages({
                             src={url}
                             width={1000}
                             height={1000}
-                            className="mx-auto object-contain max-h-screen object-center cursor-zoom-in"
+                            className="mx-auto object-contain max-h-screen object-center cursor-zoom-in w-fit"
                             alt={caption}
                             onClick={() => handleClick(image)}
                         />
