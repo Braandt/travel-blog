@@ -14,7 +14,7 @@ export default function Document() {
 
 				<meta name="theme-color" content="#000000" />
 				<meta name="description"
-					content="Andando de bicicleta pelo sul das Américas :)" />
+					content="Viajando de bicicleta pelo sul das Américas :)" />
 			</Head>
 			<body>
 				<Main />
