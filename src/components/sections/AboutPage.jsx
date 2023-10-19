@@ -15,7 +15,7 @@ export default function AboutPage() {
 
     return (
         <>
-            <div className="min-h-screen grid mx-6 gap-6 my-12 bg-pallete-2 rounded-lg
+            <div className="min-h-screen grid flex-row-reverse mx-6 gap-6 my-12 bg-pallete-2 rounded-lg p-3
         md:grid-cols-2 md:gap-12
         ">
 
@@ -23,11 +23,11 @@ export default function AboutPage() {
 
                 <div className="flex items-center">
                     <Image
-                        src={'/images/posts/a-neuquen/a-neuquen-34.jpg'}
+                        src={'/images/about_picture2.jpg'}
                         width={500}
                         height={500}
                         alt="A handsome guy"
-                        className="object-contain h-fit rounded-xl"
+                        className="h-fit rounded-xl my-3 aspect-square object-cover"
                     />
                 </div>
 
@@ -39,7 +39,9 @@ export default function AboutPage() {
                     text='contato'
                 />
 
-                <div className="flex justify-center mb-24 gap-12">
+                <div
+                    className="flex flex-col justify-center items-center mb-24 gap-12 mx-6"
+                >
                     <ContactButton
                         href='mailto:leoobrandt@hotmail.com'
                         text='leoobrandt@hotmail.com'

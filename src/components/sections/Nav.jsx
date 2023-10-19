@@ -20,7 +20,7 @@ export default function Nav() {
                 md:h-12"
             ></div>
             <nav
-                className='fixed top-0 w-full left-0 flex items-center justify-center h-16
+                className='fixed top-0 w-full left-0 flex items-center justify-center h-16 shadow-md
                 bg-pallete-2 tracking-widest z-40 transition-all duration-300 text-amber-50
                 md:h-12'
                 style={{ transform: navVisible ? 'translateY(0)' : 'translateY(-150px)' }}

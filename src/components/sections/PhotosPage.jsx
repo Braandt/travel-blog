@@ -18,6 +18,9 @@ export default function PhotosPage() {
     const [limitedImages, setLimitedImages] = useState([])
 
     useEffect(() => {
+
+        let tempImages = []
+
         fetch('/images/PhotosPageImages.json')
             .then(res => res.json())
             .then(data => {
@@ -26,8 +29,13 @@ export default function PhotosPage() {
                         .then(res => res.json())
                         .then(newData => {
                             const imgs = newData.filter(newItem => item.imagesId.includes(newItem.id))
-                            setAllImages(imgs)
-                            setImages(imgs)
+
+                            if (!tempImages.includes(imgs[0])) {
+                                tempImages = [...tempImages, ...imgs]
+                            }
+
+                            setAllImages(tempImages)
+                            setImages(tempImages)
                         }
                         )
                 })
@@ -42,7 +50,11 @@ export default function PhotosPage() {
         setImagesLocation(image.location)
     }
 
-    const locations = images.length > 0 && [...new Set(allImages.map(image => image.location))]
+    let tags = []
+    images.length > 0 && allImages.map(image => tags.push(...image.tags))
+    const tagsUnique = tags.filter((value, index, array) => array.indexOf(value) === index)
+    console.log(tagsUnique)
+    // const tags = images.length > 0 && [...new Set(allImages.map(image => image.tags))]
 
     const showMore = () => {
         setShowMoreCounter(prevState => prevState + 1)
@@ -62,7 +74,7 @@ export default function PhotosPage() {
 
             <PagesHero header='Fotos' />
 
-            <Filter label={'Filtrar imagens:'} options={locations} setItems={setImages} allItems={allImages} tags='location' />
+            <Filter label={'Filtrar imagens:'} options={tagsUnique} setItems={setImages} allItems={allImages} tags='tags' />
 
             <div className="mt-12">
                 <div
@@ -72,7 +84,7 @@ export default function PhotosPage() {
 
                     {limitedImages.map((image, index) => (
                         <ImageComponent
-                            key={image.id}
+                            key={image.url}
                             image={image}
                             index={index}
                             imageClickHandle={imageClickHandle}
